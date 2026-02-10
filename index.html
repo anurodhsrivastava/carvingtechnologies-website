@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carving Technologies Inc. — Engineering Bold Ideas</title>
+  <meta name="description" content="Carving Technologies Inc. builds cutting-edge software across AI, real-time systems, cross-platform mobile, fintech, privacy, and marketplace platforms.">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --bg-card: #f8f9fc;
+      --bg-card-hover: #f0f2f8;
+      --border: #e2e5ef;
+      --text: #1a1a2e;
+      --text-muted: #5a5f7a;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      --accent-gradient-text: linear-gradient(135deg, #2563eb, #7c3aed);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: var(--accent-gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      background: var(--accent-gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 5rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(139, 92, 246, 0.06) 50%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge .dot {
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+    }
+
+    .hero h1 .gradient-text {
+      background: var(--accent-gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 550px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.35);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+    }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--accent-gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-card .label {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Capabilities ── */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .cap-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .cap-card:hover {
+      border-color: rgba(59, 130, 246, 0.35);
+      background: var(--bg-card-hover);
+      box-shadow: 0 4px 16px rgba(59, 130, 246, 0.08);
+    }
+
+    .cap-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .cap-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .cap-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(139, 92, 246, 0.08);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-header h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .project-link {
+      color: var(--text-muted);
+      transition: color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .project-link:hover {
+      color: var(--text);
+    }
+
+    .project-card .repo-name {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      padding: 0.25rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: #2563eb;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .tag.purple {
+      background: rgba(139, 92, 246, 0.1);
+      color: #7c3aed;
+      border-color: rgba(139, 92, 246, 0.2);
+    }
+
+    .tag.green {
+      background: rgba(22, 163, 74, 0.1);
+      color: #16a34a;
+      border-color: rgba(22, 163, 74, 0.2);
+    }
+
+    /* ── Tech Stack ── */
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+
+    .tech-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .tech-pill:hover {
+      border-color: rgba(59, 130, 246, 0.4);
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
+    }
+
+    .tech-pill .tech-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--accent-gradient);
+    }
+
+    .cta-box h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    /* ── SVG Icons ── */
+    .icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1.25rem;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(12px);
+        padding: 1rem 2rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .hero h1 {
+        font-size: 2.25rem;
+      }
+
+      footer .footer-inner {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Carving Technologies</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#capabilities">Capabilities</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#stack">Tech Stack</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Open Source &middot; carvingtechnologies.io
+    </div>
+    <h1 class="fade-in">Engineering <span class="gradient-text">Bold Ideas</span> Into Real Products</h1>
+    <p class="fade-in">We build production-grade software across AI, real-time systems, mobile, fintech, and privacy — from concept to code.</p>
+    <div class="hero-buttons fade-in">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn btn-secondary">
+        <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+        View Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="fade-in">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">Built by Engineers, for Everyone</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <p>Carving Technologies Inc. is a software engineering studio that turns ambitious ideas into production-ready products. We work across the full spectrum of modern technology — from AI-powered applications and real-time communication systems to privacy-first mobile apps and data-driven fintech tools.</p>
+        <p>Our approach is hands-on and open source. Every project in our portfolio is publicly available, demonstrating our commitment to transparency, code quality, and the developer community. We believe the best way to prove what you can build is to show it.</p>
+        <p>Whether you need a technical co-founder, a dev team to bring your vision to life, or expertise in a specific domain, we're ready to build with you.</p>
+      </div>
+      <div class="about-stats fade-in">
+        <div class="stat-card">
+          <div class="number">6+</div>
+          <div class="label">Open Source Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">15+</div>
+          <div class="label">Technologies</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">6</div>
+          <div class="label">Core Domains</div>
+        </div>
+        <div class="stat-card">
+          <div class="number">100%</div>
+          <div class="label">Open Source</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section id="capabilities">
+    <div class="fade-in">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Core Capabilities</h2>
+      <p class="section-subtitle">Deep expertise across six domains, backed by real shipped projects.</p>
+    </div>
+    <div class="capabilities-grid">
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x1F9E0;</div>
+        <h3>AI &amp; Machine Learning</h3>
+        <p>Retrieval-augmented generation, LLM integration, vector embeddings, streaming AI responses, and intelligent data pipelines.</p>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x26A1;</div>
+        <h3>Real-Time &amp; P2P Systems</h3>
+        <p>WebSocket architectures, peer-to-peer mesh networking, Socket.io, offline-capable real-time sync, and multiplayer game servers.</p>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x1F4F1;</div>
+        <h3>Cross-Platform Mobile</h3>
+        <p>React Native and Expo-powered apps for iOS and Android with native performance, push notifications, and biometric authentication.</p>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x1F310;</div>
+        <h3>Full-Stack Web</h3>
+        <p>Next.js, React, Node.js, and TypeScript — from server-rendered marketing sites to complex interactive web applications.</p>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x1F512;</div>
+        <h3>Privacy &amp; Security</h3>
+        <p>End-to-end encryption, offline-first architecture, biometric auth, and privacy-by-design systems that work without internet.</p>
+      </div>
+      <div class="cap-card fade-in">
+        <div class="cap-icon">&#x1F4CA;</div>
+        <h3>Data &amp; Fintech</h3>
+        <p>Financial APIs, real-time data visualization, volatility analytics, and dashboard-driven tools for data-heavy applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="fade-in">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Every project is open source. Explore the code, fork it, or collaborate with us.</p>
+    </div>
+    <div class="projects-grid">
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>OffGridChat</h3>
+          <a href="https://github.com/ridgelinetech/OffGridChat" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/OffGridChat</div>
+        <p>Peer-to-peer encrypted messaging app that works completely offline. Uses mesh networking and end-to-end encryption for private communication without any server infrastructure.</p>
+        <div class="project-tags">
+          <span class="tag">React Native</span>
+          <span class="tag purple">P2P Mesh</span>
+          <span class="tag purple">E2E Encryption</span>
+          <span class="tag green">Offline-First</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>Snowboard Coach AI</h3>
+          <a href="https://github.com/ridgelinetech/snowboard-coach-ai" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/snowboard-coach-ai</div>
+        <p>RAG-powered AI snowboard coaching assistant. Uses vector embeddings and LLMs to deliver personalized technique analysis and real-time streaming responses.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenAI</span>
+          <span class="tag purple">RAG</span>
+          <span class="tag purple">LangChain</span>
+          <span class="tag green">Streaming</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>Coach Andy</h3>
+          <a href="https://github.com/ridgelinetech/snowboard-lessons" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/snowboard-lessons</div>
+        <p>Full-stack sports coaching marketplace connecting instructors with students. Features booking management, scheduling, reviews, and payment processing.</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">React</span>
+          <span class="tag purple">Firebase</span>
+          <span class="tag green">Marketplace</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>Game 29</h3>
+          <a href="https://github.com/ridgelinetech/game29" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/game29</div>
+        <p>Cross-platform multiplayer card game with real-time game state sync. Features lobby management, matchmaking, and smooth animations on both iOS and Android.</p>
+        <div class="project-tags">
+          <span class="tag">React Native</span>
+          <span class="tag">Expo</span>
+          <span class="tag purple">Socket.io</span>
+          <span class="tag green">Multiplayer</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>Daycare Finder</h3>
+          <a href="https://github.com/ridgelinetech/daycare-finder" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/daycare-finder</div>
+        <p>Community services marketplace for finding and comparing local daycares. Features location-based search, reviews, filtering, and a provider dashboard.</p>
+        <div class="project-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag purple">Firebase</span>
+          <span class="tag green">Geolocation</span>
+        </div>
+      </div>
+
+      <div class="project-card fade-in">
+        <div class="project-header">
+          <h3>Volatile Stocks</h3>
+          <a href="https://github.com/ridgelinetech/volatile-stocks" target="_blank" rel="noopener" class="project-link" aria-label="View on GitHub">
+            <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          </a>
+        </div>
+        <div class="repo-name">ridgelinetech/volatile-stocks</div>
+        <p>Financial volatility tracking dashboard with real-time data visualization. Monitors stock price movements, calculates volatility metrics, and surfaces actionable insights.</p>
+        <div class="project-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag purple">Financial APIs</span>
+          <span class="tag green">Data Viz</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="stack" style="text-align: center;">
+    <div class="fade-in">
+      <p class="section-label">Tech Stack</p>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto;">Technologies We Work With</h2>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">A curated set of modern tools and frameworks that power our projects.</p>
+    </div>
+    <div class="tech-grid fade-in">
+      <span class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#000000"></span>Next.js</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React Native</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#4630eb"></span>Expo</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#3178c6"></span>TypeScript</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#f7df1e"></span>JavaScript</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#3776ab"></span>Python</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#68a063"></span>Node.js</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#ffca28"></span>Firebase</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#10a37f"></span>OpenAI</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#1b8a6b"></span>LangChain</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#25c2a0"></span>Socket.io</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#47a248"></span>MongoDB</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#336791"></span>PostgreSQL</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#ff6f00"></span>TensorFlow</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#2496ed"></span>Docker</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#6c47ff"></span>Pinecone</span>
+      <span class="tech-pill"><span class="tech-dot" style="background:#f05032"></span>Git</span>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="contact" class="cta-section">
+    <div class="cta-box fade-in">
+      <h2>Let's Build Something Together</h2>
+      <p>Whether you're looking for a technical partner, want to collaborate on open source, or need expertise in AI, mobile, or real-time systems — we'd love to hear from you.</p>
+      <div class="cta-buttons">
+        <a href="mailto:hello@carvingtechnologies.io" class="btn btn-primary">
+          <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+          hello@carvingtechnologies.io
+        </a>
+        <a href="https://github.com/ridgelinetech" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span>&copy; 2025 Carving Technologies Inc. All rights reserved.</span>
+      <a href="https://github.com/ridgelinetech" target="_blank" rel="noopener">github.com/ridgelinetech</a>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
