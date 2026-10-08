@@ -3,804 +3,1213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carving Technologies Inc. — Software Engineering Studio</title>
-  <meta name="description" content="Carving Technologies Inc. builds production-grade software across AI, computer vision, real-time systems, cross-platform mobile, fintech, and privacy-first platforms.">
+  <title>Carving Technologies — Software Engineering Studio</title>
+  <meta name="description" content="Carving Technologies is a software engineering studio building production-grade AI, computer vision, real-time, mobile, and privacy-first systems — from concept to deployment.">
+  <meta name="theme-color" content="#0b1020">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Carving Technologies — Software Engineering Studio">
+  <meta property="og:description" content="We design, build, and ship production-grade software across AI/ML, computer vision, real-time systems, and cross-platform mobile.">
+  <meta property="og:site_name" content="Carving Technologies">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%236366f1'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='bold' fill='white' text-anchor='middle'%3ECT%3C/text%3E%3C/svg%3E">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg: #ffffff;
-      --bg-soft: #f8fafc;
-      --bg-muted: #f1f5f9;
-      --border: #e2e8f0;
-      --border-light: #f1f5f9;
+      --bg-soft: #f7f8fc;
+      --bg-muted: #eef1f9;
+      --border: #e6e9f2;
+      --border-light: #f0f2f8;
+      --ink: #0b1020;
       --text: #0f172a;
-      --text-secondary: #334155;
-      --text-muted: #64748b;
+      --text-secondary: #3b4456;
+      --text-muted: #6b7488;
+
       --accent: #6366f1;
-      --accent-light: #a5b4fc;
-      --accent-soft: #eef2ff;
-      --teal: #14b8a6;
-      --teal-soft: #f0fdfa;
-      --teal-border: #ccfbf1;
-      --rose: #f43f5e;
-      --rose-soft: #fff1f2;
-      --rose-border: #ffe4e6;
-      --amber: #f59e0b;
-      --amber-soft: #fffbeb;
-      --amber-border: #fef3c7;
-      --sky: #0ea5e9;
-      --sky-soft: #f0f9ff;
-      --sky-border: #e0f2fe;
-      --violet: #8b5cf6;
-      --violet-soft: #f5f3ff;
-      --violet-border: #ede9fe;
-      --emerald: #10b981;
-      --emerald-soft: #ecfdf5;
-      --emerald-border: #d1fae5;
-      --orange: #f97316;
-      --orange-soft: #fff7ed;
-      --orange-border: #ffedd5;
-      --radius: 20px;
-      --radius-md: 14px;
+      --accent-2: #8b5cf6;
+      --accent-3: #22d3ee;
+      --accent-dark: #4338ca;
+      --accent-soft: #eef0ff;
+
+      --violet: #7c3aed;   --violet-soft: #f4f1ff;
+      --emerald: #059669;  --emerald-soft: #ecfdf5;
+      --sky: #0284c7;      --sky-soft: #eff8ff;
+      --amber: #d97706;    --amber-soft: #fff8eb;
+      --rose: #e11d48;     --rose-soft: #fff1f3;
+      --teal: #0d9488;     --teal-soft: #effdfa;
+      --orange: #ea580c;   --orange-soft: #fff5ed;
+      --slate: #475569;    --slate-soft: #f1f5f9;
+      --indigo: #4f46e5;   --indigo-soft: #eef0ff;
+      --cyan: #0891b2;     --cyan-soft: #ecfeff;
+
       --radius-sm: 10px;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
-      --shadow-color: 0 8px 30px rgba(99, 102, 241, 0.12);
+      --radius: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+
+      --shadow-sm: 0 1px 2px rgba(15,23,42,.05);
+      --shadow: 0 2px 8px rgba(15,23,42,.06), 0 1px 2px rgba(15,23,42,.04);
+      --shadow-md: 0 8px 24px -8px rgba(15,23,42,.12), 0 2px 6px -2px rgba(15,23,42,.06);
+      --shadow-lg: 0 18px 40px -12px rgba(15,23,42,.18), 0 6px 14px -8px rgba(15,23,42,.08);
+      --shadow-xl: 0 30px 60px -18px rgba(35,40,90,.28);
+      --shadow-glow: 0 10px 40px -8px rgba(99,102,241,.45);
+
+      --maxw: 1180px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
       color: var(--text);
+      background: var(--bg);
       line-height: 1.6;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Sora', 'Inter', sans-serif; }
 
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 2rem; height: 68px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s;
+    ::selection { background: rgba(99,102,241,.22); color: var(--ink); }
+
+    a { color: inherit; }
+
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+    .gradient-text {
+      background: linear-gradient(110deg, #818cf8 0%, #c084fc 45%, #22d3ee 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    nav.scrolled {
-      border-bottom-color: var(--border);
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    .gradient-text-dark {
+      background: linear-gradient(110deg, #6366f1 0%, #8b5cf6 50%, #0891b2 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .nav-logo {
-      font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em;
-      color: var(--text); display: flex; align-items: center; gap: 0.5rem;
+
+    /* ─── Navigation ─── */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 1.1rem 0; transition: all .35s cubic-bezier(.4,0,.2,1);
+      background: transparent;
     }
-    .nav-logo-mark {
-      width: 30px; height: 30px; border-radius: 8px;
-      background: linear-gradient(135deg, var(--accent), var(--teal));
+    .navbar.scrolled {
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 1px 0 rgba(15,23,42,.06), 0 6px 24px -16px rgba(15,23,42,.3);
+      padding: .7rem 0;
+    }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+
+    .logo {
+      font-size: 1.05rem; font-weight: 800; color: #fff; text-decoration: none;
+      letter-spacing: -.02em; display: flex; align-items: center; gap: .6rem;
+      transition: color .35s ease; font-family: 'Sora', sans-serif;
+    }
+    .navbar.scrolled .logo { color: var(--ink); }
+    .logo-mark {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6 60%, #22d3ee);
       display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 800; font-size: 0.8rem;
-    }
-    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500; color: var(--text-muted);
-      padding: 0.45rem 0.8rem; border-radius: 8px; transition: all 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent); background: var(--accent-soft); }
-    .nav-toggle {
-      display: none; background: none; border: none;
-      color: var(--text); font-size: 1.5rem; cursor: pointer;
+      font-size: .85rem; font-weight: 800; color: #fff; letter-spacing: 0;
+      box-shadow: 0 4px 14px -2px rgba(99,102,241,.6);
     }
 
-    /* ── Sections ── */
-    section { padding: 6rem 2rem; max-width: 1140px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; margin-bottom: 0.5rem; display: inline-block;
-      padding: 0.3rem 0.8rem; border-radius: 100px;
-    }
-    .section-title {
-      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
-      line-height: 1.12; letter-spacing: -0.03em;
-    }
-    .section-subtitle {
-      color: var(--text-muted); font-size: 1.1rem;
-      max-width: 580px; margin-bottom: 3.5rem; line-height: 1.7;
-    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .9rem; font-weight: 500; color: rgba(255,255,255,.82); text-decoration: none; transition: color .2s ease; }
+    .nav-links a:hover { color: #fff; }
+    .navbar.scrolled .nav-links a { color: var(--text-muted); }
+    .navbar.scrolled .nav-links a:hover { color: var(--ink); }
 
-    /* ── Fade ── */
-    .fade-in {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    .nav-cta {
+      background: rgba(255,255,255,.12) !important; border: 1px solid rgba(255,255,255,.25);
+      padding: .55rem 1.25rem; border-radius: 100px; color: #fff !important;
+      transition: all .25s ease !important; font-weight: 600 !important;
     }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .nav-cta:hover { background: rgba(255,255,255,.22) !important; transform: translateY(-1px); }
+    .navbar.scrolled .nav-cta {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+      border-color: transparent !important; color: #fff !important;
+      box-shadow: 0 6px 18px -6px rgba(99,102,241,.6);
+    }
+    .navbar.scrolled .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -6px rgba(99,102,241,.7); }
 
-    /* ── Hero ── */
-    .hero-wrapper {
-      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      position: relative; overflow: hidden;
-    }
-    .hero-wrapper::before {
-      content: ''; position: absolute; top: -30%; right: -15%;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-    .hero-wrapper::after {
-      content: ''; position: absolute; bottom: -20%; left: -10%;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(20,184,166,0.06) 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: all .3s ease; }
+    .navbar.scrolled .hamburger span { background: var(--ink); }
+
+    /* ─── Hero ─── */
     .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding-top: 5rem; position: relative; z-index: 1;
+      position: relative; min-height: 100vh; display: flex; align-items: center;
+      padding: 9rem 0 6rem; overflow: hidden;
+      background: radial-gradient(120% 120% at 80% 0%, #1a1545 0%, #0d1330 45%, #070a1c 100%);
     }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(120% 100% at 50% 0%, #000 30%, transparent 75%);
+    }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; will-change: transform; }
+    .blob-1 { width: 520px; height: 520px; top: -160px; right: -80px; background: radial-gradient(circle, #6366f1, transparent 70%); animation: drift1 22s ease-in-out infinite; }
+    .blob-2 { width: 460px; height: 460px; bottom: -180px; left: -120px; background: radial-gradient(circle, #22d3ee, transparent 70%); opacity: .4; animation: drift2 26s ease-in-out infinite; }
+    .blob-3 { width: 380px; height: 380px; top: 30%; left: 40%; background: radial-gradient(circle, #a855f7, transparent 70%); opacity: .35; animation: drift3 30s ease-in-out infinite; }
+
+    @keyframes drift1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-60px,50px) scale(1.12);} }
+    @keyframes drift2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(70px,-40px) scale(1.1);} }
+    @keyframes drift3 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-40px,-60px) scale(1.15);} }
+
+    .hero-inner {
+      position: relative; z-index: 2; max-width: var(--maxw); margin: 0 auto; width: 100%; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 3.5rem; align-items: center;
+    }
+    .hero-content { max-width: 640px; }
+
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.4rem 1rem 0.4rem 0.65rem;
-      background: var(--accent-soft); border: 1px solid rgba(99,102,241,0.15);
-      border-radius: 100px; font-size: 0.85rem; color: var(--accent);
-      font-weight: 500; margin-bottom: 2rem;
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 100px; padding: .4rem 1rem; font-size: .8rem; font-weight: 500;
+      color: rgba(255,255,255,.85); margin-bottom: 1.6rem; backdrop-filter: blur(8px);
     }
-    .hero-badge .dot {
-      width: 7px; height: 7px; background: var(--emerald);
-      border-radius: 50%; animation: pulse-dot 2s ease infinite;
-    }
-    @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 0 0 rgba(52,211,153,.7); animation: pulse-dot 2.2s ease-out infinite; }
+    @keyframes pulse-dot { 0%{box-shadow:0 0 0 0 rgba(52,211,153,.6);} 70%{box-shadow:0 0 0 8px rgba(52,211,153,0);} 100%{box-shadow:0 0 0 0 rgba(52,211,153,0);} }
+
     .hero h1 {
-      font-size: clamp(2.75rem, 6vw, 4.25rem); font-weight: 800;
-      line-height: 1.1; margin-bottom: 1.5rem; max-width: 780px;
-      letter-spacing: -0.04em; color: var(--text);
+      font-size: clamp(2.5rem, 5.5vw, 4rem); font-weight: 800; color: #fff;
+      line-height: 1.05; letter-spacing: -.035em; margin-bottom: 1.5rem;
     }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--accent), var(--teal));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-description {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,.66);
+      margin-bottom: 2.4rem; max-width: 540px;
     }
-    .hero > p {
-      font-size: 1.2rem; color: var(--text-muted);
-      max-width: 540px; margin-bottom: 2.5rem; line-height: 1.7;
-    }
-    .hero-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
 
-    /* ── Buttons ── */
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.6rem; border-radius: 10px;
-      font-size: 0.925rem; font-weight: 600; cursor: pointer;
-      border: none; transition: all 0.2s; font-family: inherit;
-    }
-    .btn:hover { transform: translateY(-1px); }
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #818cf8);
-      color: #fff; box-shadow: 0 4px 16px rgba(99,102,241,0.3);
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #fff; padding: .95rem 1.9rem; border-radius: 100px;
+      font-size: .95rem; font-weight: 600; text-decoration: none;
+      transition: all .25s cubic-bezier(.4,0,.2,1); border: none; cursor: pointer;
+      box-shadow: 0 10px 30px -8px rgba(99,102,241,.6);
     }
-    .btn-primary:hover { box-shadow: 0 8px 28px rgba(99,102,241,0.4); }
-    .btn-outline {
-      background: #fff; color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow-sm); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -10px rgba(99,102,241,.75); }
+    .btn-primary .arrow { transition: transform .25s ease; }
+    .btn-primary:hover .arrow { transform: translateX(4px); }
 
-    /* ── About ── */
-    .about-section { background: var(--bg-soft); }
-    .about-section .section-label { background: var(--accent-soft); color: var(--accent); }
-    .about-grid {
-      display: grid; grid-template-columns: 1.2fr 1fr;
-      gap: 4rem; align-items: start;
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: .55rem; background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92); padding: .95rem 1.7rem; border-radius: 100px;
+      font-size: .95rem; font-weight: 500; text-decoration: none;
+      border: 1px solid rgba(255,255,255,.18); transition: all .25s ease; backdrop-filter: blur(8px);
     }
-    .about-text p {
-      color: var(--text-secondary); margin-bottom: 1.5rem;
-      font-size: 1.05rem; line-height: 1.8;
-    }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .stat-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: 1.5rem;
-      box-shadow: var(--shadow-sm); transition: all 0.2s;
-    }
-    .stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .stat-card .number {
-      font-size: 2.25rem; font-weight: 800; letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--accent), var(--teal));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .stat-card .label { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; margin-top: 0.2rem; }
+    .btn-secondary:hover { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.3); transform: translateY(-2px); }
 
-    /* ── Capabilities ── */
-    .cap-section .section-label { background: var(--teal-soft); color: var(--teal); }
-    .capabilities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .cap-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: 1.75rem;
-      transition: all 0.25s; position: relative;
+    /* Hero visual — floating glass stat cards */
+    .hero-visual { position: relative; height: 420px; }
+    .glass-card {
+      position: absolute; background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-lg);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      padding: 1.4rem 1.5rem; box-shadow: 0 20px 50px -20px rgba(0,0,0,.6);
+      animation: float 6s ease-in-out infinite;
     }
-    .cap-card:hover {
-      box-shadow: var(--shadow-md); transform: translateY(-2px);
-      border-color: transparent;
-    }
-    .cap-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; margin-bottom: 1rem;
-    }
-    .cap-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .cap-card p { color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; }
+    @keyframes float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
+    .gc-1 { top: 0; left: 0; width: 230px; animation-delay: 0s; }
+    .gc-2 { top: 140px; right: 0; width: 215px; animation-delay: 1.4s; }
+    .gc-3 { bottom: 0; left: 30px; width: 250px; animation-delay: 2.6s; }
+    .gc-num { font-family: 'Sora',sans-serif; font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -.02em; }
+    .gc-num span { background: linear-gradient(120deg,#818cf8,#22d3ee); -webkit-background-clip: text; background-clip:text; -webkit-text-fill-color: transparent; }
+    .gc-label { font-size: .78rem; color: rgba(255,255,255,.6); font-weight: 500; margin-top: .35rem; }
+    .gc-row { display: flex; align-items: center; gap: .6rem; margin-bottom: .2rem; }
+    .gc-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: .9rem; background: rgba(255,255,255,.12); }
 
-    /* Cap card colors */
-    .cap-card:nth-child(1) { border-left: 3px solid var(--accent); }
-    .cap-card:nth-child(1) .cap-icon { background: var(--accent-soft); }
-    .cap-card:nth-child(2) { border-left: 3px solid var(--rose); }
-    .cap-card:nth-child(2) .cap-icon { background: var(--rose-soft); }
-    .cap-card:nth-child(3) { border-left: 3px solid var(--amber); }
-    .cap-card:nth-child(3) .cap-icon { background: var(--amber-soft); }
-    .cap-card:nth-child(4) { border-left: 3px solid var(--sky); }
-    .cap-card:nth-child(4) .cap-icon { background: var(--sky-soft); }
-    .cap-card:nth-child(5) { border-left: 3px solid var(--emerald); }
-    .cap-card:nth-child(5) .cap-icon { background: var(--emerald-soft); }
-    .cap-card:nth-child(6) { border-left: 3px solid var(--violet); }
-    .cap-card:nth-child(6) .cap-icon { background: var(--violet-soft); }
-    .cap-card:nth-child(7) { border-left: 3px solid var(--orange); }
-    .cap-card:nth-child(7) .cap-icon { background: var(--orange-soft); }
+    /* ─── Marquee ─── */
+    .marquee-wrap { background: var(--ink); padding: 1.6rem 0; overflow: hidden; position: relative; }
+    .marquee-wrap::before, .marquee-wrap::after { content:''; position:absolute; top:0; bottom:0; width:120px; z-index:2; }
+    .marquee-wrap::before { left:0; background: linear-gradient(90deg, var(--ink), transparent); }
+    .marquee-wrap::after { right:0; background: linear-gradient(270deg, var(--ink), transparent); }
+    .marquee { display: flex; gap: 3rem; width: max-content; animation: scroll-x 38s linear infinite; }
+    .marquee:hover { animation-play-state: paused; }
+    @keyframes scroll-x { to { transform: translateX(-50%); } }
+    .marquee-item { color: rgba(255,255,255,.5); font-weight: 600; font-size: .95rem; letter-spacing: .01em; white-space: nowrap; display: flex; align-items: center; gap: .5rem; }
+    .marquee-item .dot { width: 5px; height: 5px; border-radius: 50%; background: #6366f1; }
 
-    /* ── Case Studies ── */
-    .cases-section { background: var(--bg-soft); }
-    .cases-section .section-label { background: var(--violet-soft); color: var(--violet); }
-    .cases-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+    /* ─── Sections ─── */
+    .section { padding: 6.5rem 0; position: relative; }
+    .section-alt { background: var(--bg-soft); }
+    .section-dark { background: radial-gradient(120% 120% at 50% 0%, #161141 0%, #0b1020 60%); color: #fff; }
 
-    .case-card {
-      background: #fff; border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 0;
-      overflow: hidden; transition: all 0.3s;
-      display: grid; grid-template-columns: 1fr 1fr;
-      box-shadow: var(--shadow-sm);
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header-center { text-align: center; }
+    .section-header-center .section-subtitle { margin: 0 auto; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: .5rem; font-size: .78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 1rem;
+      background: var(--accent-soft); padding: .35rem .85rem; border-radius: 100px;
     }
-    .case-card:hover {
-      box-shadow: var(--shadow-lg); transform: translateY(-3px);
-      border-color: transparent;
-    }
-    .case-card:nth-child(even) { direction: rtl; }
-    .case-card:nth-child(even) > * { direction: ltr; }
+    .section-dark .section-label { color: #a5b4fc; background: rgba(99,102,241,.15); }
+    .section-title { font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.12; color: var(--ink); }
+    .section-dark .section-title { color: #fff; }
+    .section-subtitle { font-size: 1.08rem; color: var(--text-muted); line-height: 1.7; max-width: 620px; margin-top: 1.1rem; }
+    .section-dark .section-subtitle { color: rgba(255,255,255,.65); }
 
-    .case-visual {
-      padding: 2.5rem; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .case-visual .case-emoji {
-      font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;
-    }
-    .case-visual .case-category {
-      font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.08em; padding: 0.25rem 0.7rem;
-      border-radius: 100px; position: relative; z-index: 1;
-    }
-    .case-visual::after {
-      content: ''; position: absolute; width: 200px; height: 200px;
-      border-radius: 50%; opacity: 0.3; filter: blur(40px);
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-    }
+    /* ─── About ─── */
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center; }
+    .about-text p { font-size: 1.08rem; color: var(--text-secondary); line-height: 1.85; margin-bottom: 1.3rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--ink); font-weight: 700; }
 
-    .case-content {
-      padding: 2.5rem; display: flex; flex-direction: column;
-      justify-content: center;
+    .about-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .about-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.6rem; transition: all .3s ease; position: relative; overflow: hidden;
     }
-    .case-content h3 {
-      font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem;
-      letter-spacing: -0.02em; line-height: 1.25;
-    }
-    .case-badge {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.04em; margin-bottom: 0.75rem;
-      padding: 0.2rem 0.6rem; border-radius: 100px; width: fit-content;
-    }
+    .about-card::after { content:''; position:absolute; inset:0; border-radius: inherit; padding:1px; background: linear-gradient(135deg, rgba(99,102,241,.5), transparent 60%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity .3s ease; }
+    .about-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .about-card:hover::after { opacity: 1; }
+    .about-card-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; margin-bottom: .9rem; }
+    .about-card-num { font-family:'Sora',sans-serif; font-size: 1.85rem; font-weight: 800; color: var(--ink); letter-spacing: -.02em; line-height: 1; }
+    .about-card-label { font-size: .82rem; color: var(--text-muted); font-weight: 500; margin-top: .3rem; }
 
-    .case-challenge {
-      font-size: 0.9rem; color: var(--text-muted); line-height: 1.65;
-      margin-bottom: 1.25rem;
+    /* ─── Capabilities ─── */
+    .capabilities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+    .capability-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.8rem; transition: all .3s cubic-bezier(.4,0,.2,1); position: relative; overflow: hidden;
     }
-
-    .case-outcomes {
-      display: flex; flex-direction: column; gap: 0.4rem;
-      margin-bottom: 1.25rem;
+    .capability-card::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
     }
-    .case-outcomes li {
-      list-style: none; font-size: 0.85rem; color: var(--text-secondary);
-      display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5;
+    .capability-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+    .capability-card:hover::before { transform: scaleX(1); }
+    .capability-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin-bottom: 1.1rem; transition: transform .3s ease; }
+    .capability-card:hover .capability-icon { transform: scale(1.08) rotate(-4deg); }
+    .capability-card h3 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: .55rem; letter-spacing: -.01em; }
+    .capability-card p { font-size: .85rem; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── Projects ─── */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    .project-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; transition: all .35s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column;
+      position: relative;
     }
-    .case-outcomes .check {
-      width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: transparent; }
+    .project-accent { height: 4px; width: 100%; background: var(--bg-muted); }
+    .project-card-header { padding: 1.6rem 1.6rem 0; }
+    .project-card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: .85rem; gap: .5rem; flex-wrap: wrap; }
+    .project-category { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: .3rem .7rem; border-radius: 100px; display: inline-flex; align-items: center; }
+    .project-status { font-size: .68rem; font-weight: 600; display: inline-flex; align-items: center; gap: .35rem; color: var(--text-muted); white-space: nowrap; }
+    .project-status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .project-status.live .project-status-dot { animation: pulse-dot 2.2s ease-out infinite; }
+    .project-card h3 { font-size: 1.12rem; font-weight: 700; color: var(--ink); margin-bottom: .55rem; letter-spacing: -.02em; line-height: 1.3; }
+    .project-card-body { padding: 0 1.6rem; flex: 1; }
+    .project-description { font-size: .875rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.1rem; }
+    .project-features { list-style: none; margin-bottom: 1.25rem; }
+    .project-features li { font-size: .8rem; color: var(--text-secondary); padding: .22rem 0; display: flex; align-items: flex-start; gap: .55rem; line-height: 1.5; }
+    .project-features li svg { flex-shrink: 0; margin-top: 3px; }
+    .project-card-footer { padding: 1rem 1.6rem 1.6rem; margin-top: auto; }
+    .project-tech-stack { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .tech-tag { font-size: .68rem; font-weight: 600; color: var(--text-muted); background: var(--bg-muted); padding: .28rem .6rem; border-radius: 6px; white-space: nowrap; transition: all .2s ease; }
+    .project-card:hover .tech-tag { background: var(--accent-soft); color: var(--accent-dark); }
+
+    /* per-theme accent */
+    .t-violet  .project-accent{background:linear-gradient(90deg,#7c3aed,#a855f7)} .t-violet  .project-category{background:var(--violet-soft);color:var(--violet)}   .t-violet  .feat{color:var(--violet)}  .t-violet  .project-status-dot{background:var(--violet)}
+    .t-emerald .project-accent{background:linear-gradient(90deg,#059669,#10b981)} .t-emerald .project-category{background:var(--emerald-soft);color:var(--emerald)} .t-emerald .feat{color:var(--emerald)} .t-emerald .project-status-dot{background:var(--emerald)}
+    .t-sky     .project-accent{background:linear-gradient(90deg,#0284c7,#38bdf8)} .t-sky     .project-category{background:var(--sky-soft);color:var(--sky)}         .t-sky     .feat{color:var(--sky)}     .t-sky     .project-status-dot{background:var(--sky)}
+    .t-amber   .project-accent{background:linear-gradient(90deg,#d97706,#fbbf24)} .t-amber   .project-category{background:var(--amber-soft);color:var(--amber)}     .t-amber   .feat{color:var(--amber)}   .t-amber   .project-status-dot{background:var(--amber)}
+    .t-rose    .project-accent{background:linear-gradient(90deg,#e11d48,#fb7185)} .t-rose    .project-category{background:var(--rose-soft);color:var(--rose)}       .t-rose    .feat{color:var(--rose)}    .t-rose    .project-status-dot{background:var(--rose)}
+    .t-accent  .project-accent{background:linear-gradient(90deg,#6366f1,#8b5cf6)} .t-accent  .project-category{background:var(--accent-soft);color:var(--accent)}   .t-accent  .feat{color:var(--accent)}  .t-accent  .project-status-dot{background:var(--accent)}
+    .t-orange  .project-accent{background:linear-gradient(90deg,#ea580c,#fb923c)} .t-orange  .project-category{background:var(--orange-soft);color:var(--orange)}   .t-orange  .feat{color:var(--orange)}  .t-orange  .project-status-dot{background:var(--orange)}
+    .t-teal    .project-accent{background:linear-gradient(90deg,#0d9488,#2dd4bf)} .t-teal    .project-category{background:var(--teal-soft);color:var(--teal)}       .t-teal    .feat{color:var(--teal)}    .t-teal    .project-status-dot{background:var(--teal)}
+    .t-slate   .project-accent{background:linear-gradient(90deg,#475569,#94a3b8)} .t-slate   .project-category{background:var(--slate-soft);color:var(--slate)}     .t-slate   .feat{color:var(--slate)}   .t-slate   .project-status-dot{background:var(--slate)}
+    .t-cyan    .project-accent{background:linear-gradient(90deg,#0891b2,#22d3ee)} .t-cyan    .project-category{background:var(--cyan-soft);color:var(--cyan)}       .t-cyan    .feat{color:var(--cyan)}    .t-cyan    .project-status-dot{background:var(--cyan)}
+
+    /* ─── Suite callout ─── */
+    .suite { display: grid; grid-template-columns: .9fr 1.1fr; gap: 3rem; align-items: center; }
+    .suite-visual { display: flex; flex-wrap: wrap; gap: .75rem; }
+    .suite-chip {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13);
+      border-radius: 12px; padding: .85rem 1.1rem; font-size: .88rem; font-weight: 600; color: #fff;
+      display: flex; align-items: center; gap: .6rem; backdrop-filter: blur(8px); transition: all .3s ease;
     }
+    .suite-chip:hover { background: rgba(255,255,255,.12); transform: translateY(-3px); }
+    .suite-chip .em { font-size: 1.1rem; }
+    .suite-text p { font-size: 1.08rem; color: rgba(255,255,255,.7); line-height: 1.8; margin-bottom: 1.2rem; }
+    .suite-text p:last-child { margin-bottom: 0; }
+    .suite-text strong { color: #fff; }
 
-    .case-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-    .case-tag {
-      padding: 0.2rem 0.55rem; border-radius: 6px;
-      font-size: 0.7rem; font-weight: 500;
-      background: var(--bg-muted); color: var(--text-muted);
-      border: 1px solid var(--border-light);
-    }
+    /* ─── Process ─── */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; counter-reset: step; }
+    .process-card { padding: 1.8rem; border-radius: var(--radius); border: 1px solid var(--border); background: var(--bg); position: relative; transition: all .3s ease; }
+    .process-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .process-num { font-family:'Sora',sans-serif; font-size: .85rem; font-weight: 800; color: var(--accent); letter-spacing: .05em; margin-bottom: .9rem; display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 10px; background: var(--accent-soft); }
+    .process-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: .5rem; }
+    .process-card p { font-size: .87rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* Case card color themes */
-    .case-card.theme-violet .case-visual { background: var(--violet-soft); }
-    .case-card.theme-violet .case-visual::after { background: var(--violet); }
-    .case-card.theme-violet .case-category { background: rgba(139,92,246,0.12); color: var(--violet); }
-    .case-card.theme-violet .case-badge { background: var(--violet-soft); color: var(--violet); }
-    .case-card.theme-violet .case-outcomes .check { color: var(--violet); }
+    /* ─── Tech stack ─── */
+    .tech-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .9rem; }
+    .tech-group { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.4rem; transition: all .3s ease; }
+    .tech-group:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .tech-group-title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 1rem; }
+    .tech-group-items { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .tech-pill { font-size: .8rem; font-weight: 500; color: var(--text-secondary); background: var(--bg-muted); padding: .35rem .7rem; border-radius: 7px; display: inline-flex; align-items: center; gap: .4rem; transition: all .2s ease; }
+    .tech-pill:hover { background: var(--accent-soft); color: var(--accent-dark); transform: translateY(-1px); }
+    .tech-pill-dot { width: 6px; height: 6px; border-radius: 50%; }
 
-    .case-card.theme-emerald .case-visual { background: var(--emerald-soft); }
-    .case-card.theme-emerald .case-visual::after { background: var(--emerald); }
-    .case-card.theme-emerald .case-category { background: rgba(16,185,129,0.12); color: var(--emerald); }
-    .case-card.theme-emerald .case-badge { background: var(--emerald-soft); color: var(--emerald); }
-    .case-card.theme-emerald .case-outcomes .check { color: var(--emerald); }
+    /* ─── CTA ─── */
+    .cta-section { text-align: center; padding: 6.5rem 0; position: relative; overflow: hidden; }
+    .cta-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 2; padding: 0 1.5rem; }
+    .cta-section h2 { font-size: clamp(2rem,4vw,2.8rem); font-weight: 800; color: #fff; letter-spacing: -.03em; margin-bottom: 1.1rem; }
+    .cta-section p { font-size: 1.12rem; color: rgba(255,255,255,.66); line-height: 1.7; margin-bottom: 2.2rem; }
+    .cta-actions { display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .btn-cta-primary { display: inline-flex; align-items: center; gap: .55rem; background: #fff; color: var(--accent-dark); padding: .95rem 2rem; border-radius: 100px; font-size: .95rem; font-weight: 700; text-decoration: none; transition: all .25s ease; }
+    .btn-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px -10px rgba(255,255,255,.35); }
+    .btn-cta-secondary { display: inline-flex; align-items: center; gap: .55rem; background: rgba(255,255,255,.08); color: #fff; padding: .95rem 2rem; border-radius: 100px; font-size: .95rem; font-weight: 500; text-decoration: none; border: 1px solid rgba(255,255,255,.2); transition: all .25s ease; }
+    .btn-cta-secondary:hover { background: rgba(255,255,255,.15); transform: translateY(-2px); }
 
-    .case-card.theme-sky .case-visual { background: var(--sky-soft); }
-    .case-card.theme-sky .case-visual::after { background: var(--sky); }
-    .case-card.theme-sky .case-category { background: rgba(14,165,233,0.12); color: var(--sky); }
-    .case-card.theme-sky .case-badge { background: var(--sky-soft); color: var(--sky); }
-    .case-card.theme-sky .case-outcomes .check { color: var(--sky); }
+    /* ─── Footer ─── */
+    .footer { background: #070a18; border-top: 1px solid rgba(255,255,255,.06); padding: 3.5rem 0 2.5rem; }
+    .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,.07); }
+    .footer-brand-block { max-width: 320px; }
+    .footer-logo { display: flex; align-items: center; gap: .6rem; font-family:'Sora',sans-serif; font-weight: 800; color: #fff; font-size: 1.05rem; margin-bottom: .9rem; }
+    .footer-tagline { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.7; }
+    .footer-cols { display: flex; gap: 3.5rem; flex-wrap: wrap; }
+    .footer-col h4 { font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.4); margin-bottom: 1rem; font-weight: 700; }
+    .footer-col a { display: block; font-size: .88rem; color: rgba(255,255,255,.62); text-decoration: none; margin-bottom: .65rem; transition: color .2s ease; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.8rem; gap: 1rem; flex-wrap: wrap; }
+    .footer-copy { font-size: .82rem; color: rgba(255,255,255,.4); }
+    .footer-social { display: flex; gap: .75rem; }
+    .footer-social a { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); transition: all .2s ease; }
+    .footer-social a:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
-    .case-card.theme-amber .case-visual { background: var(--amber-soft); }
-    .case-card.theme-amber .case-visual::after { background: var(--amber); }
-    .case-card.theme-amber .case-category { background: rgba(245,158,11,0.12); color: #b45309; }
-    .case-card.theme-amber .case-badge { background: var(--amber-soft); color: #b45309; }
-    .case-card.theme-amber .case-outcomes .check { color: var(--amber); }
+    /* ─── Reveal animation ─── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .case-card.theme-rose .case-visual { background: var(--rose-soft); }
-    .case-card.theme-rose .case-visual::after { background: var(--rose); }
-    .case-card.theme-rose .case-category { background: rgba(244,63,94,0.12); color: var(--rose); }
-    .case-card.theme-rose .case-badge { background: var(--rose-soft); color: var(--rose); }
-    .case-card.theme-rose .case-outcomes .check { color: var(--rose); }
-
-    .case-card.theme-accent .case-visual { background: var(--accent-soft); }
-    .case-card.theme-accent .case-visual::after { background: var(--accent); }
-    .case-card.theme-accent .case-category { background: rgba(99,102,241,0.12); color: var(--accent); }
-    .case-card.theme-accent .case-badge { background: var(--accent-soft); color: var(--accent); }
-    .case-card.theme-accent .case-outcomes .check { color: var(--accent); }
-
-    .case-card.theme-orange .case-visual { background: var(--orange-soft); }
-    .case-card.theme-orange .case-visual::after { background: var(--orange); }
-    .case-card.theme-orange .case-category { background: rgba(249,115,22,0.12); color: #c2410c; }
-    .case-card.theme-orange .case-badge { background: var(--orange-soft); color: #c2410c; }
-    .case-card.theme-orange .case-outcomes .check { color: var(--orange); }
-
-    /* ── Tech ── */
-    .stack-section .section-label { background: var(--sky-soft); color: var(--sky); }
-    .tech-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-    .tech-pill {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      padding: 0.5rem 1rem; background: #fff;
-      border: 1px solid var(--border); border-radius: 8px;
-      font-size: 0.85rem; color: var(--text-secondary); transition: all 0.2s;
-    }
-    .tech-pill:hover {
-      border-color: var(--accent); color: var(--accent);
-      box-shadow: 0 2px 10px rgba(99,102,241,0.1);
-    }
-    .tech-pill .tech-dot { width: 7px; height: 7px; border-radius: 50%; }
-
-    /* ── CTA ── */
-    .cta-section { text-align: center; }
-    .cta-box {
-      background: linear-gradient(135deg, var(--accent-soft) 0%, var(--teal-soft) 100%);
-      border: 1px solid rgba(99,102,241,0.12);
-      border-radius: 24px; padding: 5rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .cta-box::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0;
-      height: 3px; background: linear-gradient(90deg, var(--accent), var(--teal));
-    }
-    .cta-box h2 {
-      font-size: 2.25rem; font-weight: 800; margin-bottom: 1rem;
-      letter-spacing: -0.03em;
-    }
-    .cta-box p {
-      color: var(--text-muted); font-size: 1.1rem;
-      max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7;
-    }
-    .cta-buttons {
-      display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .blob, .glass-card, .marquee, .hero-badge-dot, .project-status.live .project-status-dot { animation: none !important; }
+      html { scroll-behavior: auto; }
     }
 
-    /* ── Footer ── */
-    footer {
-      background: var(--bg-soft); border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-    }
-    footer .footer-inner {
-      max-width: 1140px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-    footer .footer-links { display: flex; gap: 1.5rem; }
-    footer a { color: var(--text-muted); transition: color 0.2s; }
-    footer a:hover { color: var(--accent); }
-
-    .icon { width: 18px; height: 18px; fill: currentColor; }
-
-    /* ── Responsive ── */
-    @media (max-width: 768px) {
-      section { padding: 4rem 1.25rem; }
-      nav { padding: 0 1.25rem; }
-      .nav-links {
-        display: none; position: absolute; top: 100%; left: 0; right: 0;
-        flex-direction: column; background: rgba(255,255,255,0.98);
-        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-        padding: 0.75rem 1.25rem 1.25rem; gap: 0.25rem;
-        border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md);
-      }
-      .nav-links.open { display: flex; }
-      .nav-toggle { display: block; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .capabilities-grid { grid-template-columns: 1fr; }
-      .case-card { grid-template-columns: 1fr; }
-      .case-card:nth-child(even) { direction: ltr; }
-      .case-visual { padding: 2rem; }
-      .section-title { font-size: 1.85rem; }
-      .hero h1 { font-size: 2.25rem; }
-      .hero > p { font-size: 1.05rem; }
-      .cta-box { padding: 3rem 1.5rem; }
-      .cta-box h2 { font-size: 1.75rem; }
-      footer .footer-inner { flex-direction: column; gap: 0.75rem; text-align: center; }
-      footer .footer-links { justify-content: center; }
-    }
-    @media (min-width: 769px) and (max-width: 1024px) {
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-visual { height: 340px; max-width: 480px; }
       .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .suite { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; position: absolute; top: calc(100% + 8px); left: 1rem; right: 1rem;
+        background: rgba(255,255,255,.98); backdrop-filter: blur(16px); border: 1px solid var(--border);
+        border-radius: var(--radius); flex-direction: column; align-items: stretch; padding: 1rem; gap: .35rem; box-shadow: var(--shadow-lg);
+      }
+      .nav-links.active { display: flex; }
+      .nav-links a { color: var(--text-secondary) !important; padding: .6rem .75rem; border-radius: 8px; }
+      .nav-links a:hover { background: var(--bg-soft); }
+      .nav-cta { text-align: center; margin-top: .3rem; }
+      .navbar.scrolled .nav-cta, .nav-cta { background: linear-gradient(135deg,#6366f1,#8b5cf6) !important; border-color: transparent !important; }
+
+      .hero { padding: 7.5rem 0 4rem; min-height: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .capabilities-grid { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .section { padding: 4.5rem 0; }
+      .footer-top { flex-direction: column; }
+    }
+    @media (max-width: 480px) {
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-cards { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav id="navbar">
-    <a href="#" class="nav-logo">
-      <span class="nav-logo-mark">CT</span>
-      Carving Technologies
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#capabilities">Capabilities</a></li>
-      <li><a href="#work">Case Studies</a></li>
-      <li><a href="#stack">Tech Stack</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-mark">CT</div>
+        Carving Technologies
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#tech">Stack</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- Hero -->
-  <div class="hero-wrapper">
-    <section class="hero" id="hero">
-      <div class="hero-badge fade-in">
-        <span class="dot"></span>
-        Actively Shipping &middot; Open Source
-      </div>
-      <h1 class="fade-in">We Build Software That <span class="highlight">Solves Real Problems</span></h1>
-      <p class="fade-in">A software engineering studio specializing in AI, computer vision, real-time systems, and cross-platform mobile &mdash; from prototype to production.</p>
-      <div class="hero-buttons fade-in">
-        <a href="#contact" class="btn btn-primary">Start a Conversation</a>
-        <a href="#work" class="btn btn-outline">See Our Work</a>
-      </div>
-    </section>
-  </div>
-
-  <!-- About -->
-  <div class="about-section">
-    <section id="about">
-      <div class="fade-in">
-        <span class="section-label">About Us</span>
-        <h2 class="section-title">Engineering Meets Product Thinking</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text fade-in">
-          <p>Carving Technologies Inc. is a software engineering studio that transforms ambitious ideas into production-grade products. We work across the full spectrum of modern technology &mdash; from AI-powered coaching platforms and computer vision systems to privacy-first mobile apps and real-time multiplayer games.</p>
-          <p>Our portfolio speaks for itself: every project is open source, rigorously tested, and built with the same standards we'd apply to enterprise software. We don't just write code &mdash; we architect systems that scale, delight users, and stand up to scrutiny.</p>
-          <p>Whether you need a technical co-founder, a development team for your next product, or deep expertise in a specialized domain, we're ready to build with you.</p>
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Available for new engagements
         </div>
-        <div class="about-stats fade-in">
-          <div class="stat-card"><div class="number">7+</div><div class="label">Production Projects</div></div>
-          <div class="stat-card"><div class="number">20+</div><div class="label">Technologies</div></div>
-          <div class="stat-card"><div class="number">7</div><div class="label">Core Domains</div></div>
-          <div class="stat-card"><div class="number">100%</div><div class="label">Open Source</div></div>
+        <h1>We engineer software<br>that <span class="gradient-text">ships and scales</span></h1>
+        <p class="hero-description">
+          Carving Technologies is a software engineering studio building production-grade systems across AI &amp; computer vision, real-time platforms, and cross-platform mobile &mdash; from first concept to live deployment.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:hello@carvingtechnologies.io" class="btn-primary">Start a Conversation <span class="arrow">&rarr;</span></a>
+          <a href="#projects" class="btn-secondary">View Our Work</a>
         </div>
       </div>
-    </section>
-  </div>
-
-  <!-- Capabilities -->
-  <section id="capabilities" class="cap-section">
-    <div class="fade-in">
-      <span class="section-label">What We Do</span>
-      <h2 class="section-title">Core Capabilities</h2>
-      <p class="section-subtitle">Deep expertise across seven domains, each backed by shipped production software.</p>
-    </div>
-    <div class="capabilities-grid">
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F9E0;</div>
-        <h3>AI &amp; Machine Learning</h3>
-        <p>RAG systems, LLM integration with GPT-4o, vector embeddings via Pinecone, streaming AI responses, and intelligent coaching platforms.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F3AF;</div>
-        <h3>Computer Vision</h3>
-        <p>Pose estimation with DeepLabCut, biomechanical video analysis, skeleton overlays, OpenCV pipelines, and annotated feedback generation.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x26A1;</div>
-        <h3>Real-Time &amp; P2P</h3>
-        <p>WebSocket architectures, peer-to-peer mesh networking, Socket.io multiplayer servers, and offline-capable real-time sync.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F4F1;</div>
-        <h3>Cross-Platform Mobile</h3>
-        <p>React Native and Expo apps for iOS, Android, and Web with deep linking, push notifications, and biometric authentication.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F512;</div>
-        <h3>Privacy &amp; Security</h3>
-        <p>End-to-end encryption with X25519 ECDH and AES-256, offline-first architecture, biometric locks, and zero-server privacy.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F310;</div>
-        <h3>Full-Stack Platforms</h3>
-        <p>Next.js and React applications with Firebase, Google Maps, real-time messaging, marketplace features, and Vercel deployment.</p>
-      </div>
-      <div class="cap-card fade-in">
-        <div class="cap-icon">&#x1F4CA;</div>
-        <h3>Data &amp; Fintech</h3>
-        <p>Financial volatility tracking, Yahoo Finance integrations, real-time OHLCV visualization, and algorithmic stock screening tools.</p>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="glass-card gc-1">
+          <div class="gc-row"><span class="gc-icon">&#9883;</span></div>
+          <div class="gc-num" data-count="14"><span>14</span></div>
+          <div class="gc-label">Production projects shipped</div>
+        </div>
+        <div class="glass-card gc-2">
+          <div class="gc-row"><span class="gc-icon">&#10003;</span></div>
+          <div class="gc-num"><span data-count="1900">1,900</span>+</div>
+          <div class="gc-label">Automated tests written</div>
+        </div>
+        <div class="glass-card gc-3">
+          <div class="gc-row"><span class="gc-icon">&#9632;</span></div>
+          <div class="gc-num"><span data-count="6">6</span></div>
+          <div class="gc-label">Platforms — iOS, Android, Web, tvOS &amp; TV</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Case Studies -->
-  <div class="cases-section">
-    <section id="work">
-      <div class="fade-in">
-        <span class="section-label">Case Studies</span>
-        <h2 class="section-title">Problems We've Solved</h2>
-        <p class="section-subtitle">Each project started with a real challenge. Here's how we approached and delivered solutions.</p>
-      </div>
-      <div class="cases-grid">
-
-        <!-- 1: AI Snowboard Analysis -->
-        <div class="case-card theme-violet fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F3BF;</div>
-            <span class="case-category">AI &amp; Computer Vision</span>
-          </div>
-          <div class="case-content">
-            <span class="case-badge">New</span>
-            <h3>Turning Video Into Coaching Feedback</h3>
-            <p class="case-challenge">Snowboarders struggle to self-assess technique without an instructor present. We built a system that watches their video and delivers frame-by-frame biomechanical coaching.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>DeepLabCut pose estimation analyzes knee flexion, shoulder alignment, and stance width</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Annotated video output with skeleton overlay and coaching tips per frame</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Drag-and-drop upload with real-time processing progress</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">React</span><span class="case-tag">FastAPI</span><span class="case-tag">DeepLabCut</span><span class="case-tag">OpenCV</span><span class="case-tag">PyTorch</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2: OffGridChat -->
-        <div class="case-card theme-emerald fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F4E1;</div>
-            <span class="case-category">Privacy &amp; P2P</span>
-          </div>
-          <div class="case-content">
-            <h3>Secure Messaging Without the Internet</h3>
-            <p class="case-challenge">In disaster zones, remote areas, and privacy-sensitive contexts, people need to communicate without relying on cell towers or servers. We built a fully offline encrypted messenger.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>P2P mesh via Bluetooth &amp; Wi-Fi with X25519 end-to-end encryption</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Push-to-talk voice, group chats, disappearing messages, and biometric app lock</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>86+ automated tests across 12 services, mesh relay routing for multi-hop delivery</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">React Native</span><span class="case-tag">P2P Mesh</span><span class="case-tag">E2E Encryption</span><span class="case-tag">SQLite</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3: Coach Andy -->
-        <div class="case-card theme-sky fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F3C2;</div>
-            <span class="case-category">AI Marketplace</span>
-          </div>
-          <div class="case-content">
-            <span class="case-badge" style="background: rgba(16,185,129,0.1); color: #059669;">Live &middot; coachandy.com</span>
-            <h3>An AI Coach That Knows the Sport</h3>
-            <p class="case-challenge">Beginner snowboarders can't always access a coach. We built a marketplace that connects them with real instructors and an AI coach trained on hundreds of tutorial videos.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>RAG-powered AI delivers coaching advice with video source citations and timestamps</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Multi-sport marketplace with booking, instructor profiles, and video library</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Live in production with GPT-4o streaming responses</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">Next.js</span><span class="case-tag">TypeScript</span><span class="case-tag">Firebase</span><span class="case-tag">GPT-4o</span><span class="case-tag">Pinecone</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4: Game 29 -->
-        <div class="case-card theme-amber fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F0CF;</div>
-            <span class="case-category">Real-Time Multiplayer</span>
-          </div>
-          <div class="case-content">
-            <h3>Bringing a Classic Card Game Online</h3>
-            <p class="case-challenge">The South Asian card game "29" had no good digital version. We built a cross-platform multiplayer app with strategic AI opponents so anyone can play, anywhere.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Real-time multiplayer rooms with invite codes and Socket.io game state sync</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Smart AI with strategic bidding and hand evaluation for solo play</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>iOS, Android, and Web from a single codebase with deep linking</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">React Native</span><span class="case-tag">Expo</span><span class="case-tag">Socket.io</span><span class="case-tag">PostgreSQL</span><span class="case-tag">Redis</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5: Snowboard Coach AI -->
-        <div class="case-card theme-accent fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F916;</div>
-            <span class="case-category">RAG &amp; AI Backend</span>
-          </div>
-          <div class="case-content">
-            <h3>Teaching an AI to Coach From Video</h3>
-            <p class="case-challenge">Hundreds of snowboarding tutorials exist on YouTube, but nobody can watch them all. We built an AI that ingests, understands, and teaches from that content.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Whisper transcription pipeline to extract knowledge from video tutorials</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Vector embeddings in Pinecone for contextual retrieval</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>GPT-4o streaming responses with video source citations and timestamps</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">Python</span><span class="case-tag">FastAPI</span><span class="case-tag">LangChain</span><span class="case-tag">Pinecone</span><span class="case-tag">OpenAI</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6: Daycare Finder -->
-        <div class="case-card theme-rose fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F476;</div>
-            <span class="case-category">Full-Stack Marketplace</span>
-          </div>
-          <div class="case-content">
-            <h3>Helping Parents Find Trusted Childcare</h3>
-            <p class="case-challenge">Parents in the Greater Toronto Area spend weeks researching daycares across scattered websites. We built a single platform to search, compare, and register.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Interactive Google Maps search with filters for age, language, diet, and accessibility</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Side-by-side comparison, child allergy tracking, and real-time messaging</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Provider dashboard with registration management and waitlist workflows</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">Next.js</span><span class="case-tag">TypeScript</span><span class="case-tag">Google Maps</span><span class="case-tag">Firestore</span><span class="case-tag">Zustand</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 7: Volatile Stocks -->
-        <div class="case-card theme-orange fade-in">
-          <div class="case-visual">
-            <div class="case-emoji">&#x1F4C8;</div>
-            <span class="case-category">Data &amp; Fintech</span>
-          </div>
-          <div class="case-content">
-            <h3>Surfacing the Market's Most Volatile Stocks</h3>
-            <p class="case-challenge">Active traders need to quickly identify extreme movers, but scanning hundreds of tickers manually is impractical. We built an algorithmic screener that does it automatically.</p>
-            <ul class="case-outcomes">
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Scans 200+ US equities and detects 10%+ daily swings over 4-week windows</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Interactive 20-day OHLCV charts with green/red price movement coding</li>
-              <li><svg class="check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>15-minute caching, dark theme, and responsive mobile-first layout</li>
-            </ul>
-            <div class="case-tags">
-              <span class="case-tag">Node.js</span><span class="case-tag">Express</span><span class="case-tag">Yahoo Finance</span><span class="case-tag">Chart.js</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
+  <!-- Marquee -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee" id="marquee">
+      <span class="marquee-item"><span class="dot"></span>PyTorch</span>
+      <span class="marquee-item"><span class="dot"></span>React Native</span>
+      <span class="marquee-item"><span class="dot"></span>FastAPI</span>
+      <span class="marquee-item"><span class="dot"></span>Next.js</span>
+      <span class="marquee-item"><span class="dot"></span>Kotlin Multiplatform</span>
+      <span class="marquee-item"><span class="dot"></span>OpenAI GPT-4o</span>
+      <span class="marquee-item"><span class="dot"></span>LangChain</span>
+      <span class="marquee-item"><span class="dot"></span>Pinecone</span>
+      <span class="marquee-item"><span class="dot"></span>OpenCV</span>
+      <span class="marquee-item"><span class="dot"></span>Firebase</span>
+      <span class="marquee-item"><span class="dot"></span>Socket.io</span>
+      <span class="marquee-item"><span class="dot"></span>SwiftUI</span>
+      <span class="marquee-item"><span class="dot"></span>Stripe</span>
+      <span class="marquee-item"><span class="dot"></span>Mapbox</span>
+    </div>
   </div>
 
-  <!-- Tech Stack -->
-  <section id="stack" class="stack-section" style="text-align: center;">
-    <div class="fade-in">
-      <span class="section-label">Tech Stack</span>
-      <h2 class="section-title">Technologies We Work With</h2>
-      <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Modern tools and frameworks powering every layer &mdash; from ML pipelines to production deployments.</p>
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-label">About the studio</div>
+          <h2 class="section-title" style="margin-bottom:1.6rem;">Built for complexity.<br>Driven by craft.</h2>
+          <p>
+            Carving Technologies is a software engineering studio specializing in technically demanding products. We work across the full stack &mdash; from <strong>training custom ML models</strong> and building computer-vision pipelines to shipping polished mobile apps and real-time multiplayer systems.
+          </p>
+          <p>
+            Our portfolio spans AI coaching platforms with custom-trained pose-estimation models, peer-to-peer encrypted messaging, cross-platform TV apps, GPS activity tracking, RAG-powered assistants, and developer tooling. Every project reflects a commitment to <strong>clean architecture, rigorous testing, and thoughtful UX</strong>.
+          </p>
+          <p>
+            Whether it's an MVP for a startup or a complex system for an established business, we bring the same rigor: understand the problem deeply, choose the right tools, and ship software that works.
+          </p>
+        </div>
+        <div class="about-cards reveal">
+          <div class="about-card">
+            <div class="about-card-icon" style="background:var(--accent-soft);color:var(--accent);">&#9670;</div>
+            <div class="about-card-num">14</div>
+            <div class="about-card-label">Production projects</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon" style="background:var(--emerald-soft);color:var(--emerald);">&#9679;</div>
+            <div class="about-card-num">40+</div>
+            <div class="about-card-label">Technologies in use</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon" style="background:var(--sky-soft);color:var(--sky);">&#9632;</div>
+            <div class="about-card-num">9</div>
+            <div class="about-card-label">Core domains</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon" style="background:var(--amber-soft);color:var(--amber);">&#9650;</div>
+            <div class="about-card-num">1.9K+</div>
+            <div class="about-card-label">Automated tests</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tech-grid fade-in">
-      <span class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#111"></span>Next.js</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React Native</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#4630eb"></span>Expo</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#3178c6"></span>TypeScript</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#3776ab"></span>Python</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#68a063"></span>Node.js</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#009688"></span>FastAPI</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#ffca28"></span>Firebase</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#10a37f"></span>OpenAI</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#1b8a6b"></span>LangChain</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#ee4c2c"></span>PyTorch</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#5c2d91"></span>OpenCV</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#25c2a0"></span>Socket.io</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#336791"></span>PostgreSQL</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#dc382d"></span>Redis</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#2d3748"></span>Prisma</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#6c47ff"></span>Pinecone</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#06b6d4"></span>Tailwind CSS</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#2496ed"></span>Docker</span>
-      <span class="tech-pill"><span class="tech-dot" style="background:#f05032"></span>Git</span>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section section-alt" id="capabilities">
+    <div class="container">
+      <div class="section-header section-header-center reveal">
+        <div class="section-label">Capabilities</div>
+        <h2 class="section-title">End-to-end engineering across domains</h2>
+        <p class="section-subtitle">From machine-learning pipelines to pixel-perfect interfaces, we deliver complete solutions across a broad technical spectrum.</p>
+      </div>
+      <div class="capabilities-grid">
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--violet-soft);color:var(--violet);">&#9883;</div>
+          <h3>AI &amp; Machine Learning</h3>
+          <p>Custom-trained PyTorch models, RAG systems with LangChain &amp; Pinecone, GPT-4o integration, LLM reranking, and confidence-weighted scoring.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--sky-soft);color:var(--sky);">&#9681;</div>
+          <h3>Computer Vision</h3>
+          <p>Custom ResNet-50 pose estimation with Wing Loss, MediaPipe geometry, CNN sport classification, and biomechanical analysis pipelines.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--emerald-soft);color:var(--emerald);">&#9889;</div>
+          <h3>Real-Time Systems</h3>
+          <p>WebSocket multiplayer, Socket.io game servers, live GPS tracking, SSE streaming, and Redis-backed state management.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--amber-soft);color:var(--amber);">&#9776;</div>
+          <h3>Cross-Platform Mobile</h3>
+          <p>React Native &amp; Expo for iOS, Android &amp; Web. Kotlin Multiplatform for tvOS and Android TV. Native-grade experiences everywhere.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--rose-soft);color:var(--rose);">&#9740;</div>
+          <h3>Privacy &amp; Security</h3>
+          <p>End-to-end encryption with X25519 ECDH &amp; AES-256, P2P mesh networking, key rotation, offline-first, and zero-trust design.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--accent-soft);color:var(--accent);">&#9638;</div>
+          <h3>Full-Stack Platforms</h3>
+          <p>Next.js &amp; React frontends, FastAPI &amp; Express backends, Firebase &amp; PostgreSQL datastores, with full auth, payments &amp; APIs.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--orange-soft);color:var(--orange);">&#9636;</div>
+          <h3>Data &amp; Fintech</h3>
+          <p>Financial data pipelines, market screening, mortgage &amp; investment modeling with stress testing, and real-time charting.</p>
+        </div>
+        <div class="capability-card reveal">
+          <div class="capability-icon" style="background:var(--teal-soft);color:var(--teal);">&#8982;</div>
+          <h3>Streaming &amp; Media</h3>
+          <p>IPTV players, M3U/EPG parsing, catchup &amp; DVR, ExoPlayer &amp; AVPlayer playback, and Picture-in-Picture support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-header section-header-center reveal">
+        <div class="section-label">Selected work</div>
+        <h2 class="section-title">What we've built</h2>
+        <p class="section-subtitle">A selection of production systems spanning AI, mobile, real-time, streaming, and cross-platform engineering.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- AI Sports Analysis -->
+        <article class="project-card t-violet reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">AI &amp; Computer Vision</span>
+            </div>
+            <h3>Multi-Sport AI Coaching Platform</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Production platform that analyzes athlete technique from video using custom-trained pose-estimation models, returning biomechanical feedback, an A&ndash;F score, and sport-specific drills.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Custom ResNet-50 + Wing Loss models per sport</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>CNN ensemble sport detection (MobileNetV2, 94.5%)</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Stripe billing, admin dashboard, 10-language i18n</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>320 tests, Sentry + Prometheus, Docker deploy</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React 19</span><span class="tech-tag">FastAPI</span><span class="tech-tag">PyTorch</span><span class="tech-tag">OpenCV</span><span class="tech-tag">Stripe</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PeakTracker -->
+        <article class="project-card t-emerald reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">GPS &amp; Mobile</span>
+              <span class="project-status"><span class="project-status-dot"></span>In Development</span>
+            </div>
+            <h3>PeakTracker &mdash; Ski &amp; Snowboard Tracking</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Cross-platform app for real-time GPS tracking on the mountain, with automatic activity detection, group sessions, 3D replays, and HealthKit sync.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Multi-signal confidence scoring + GPS Kalman filtering</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Live group sessions on Apple Maps</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>3D Mapbox replays, leaderboards, snow reports</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>1,055 tests, Siri Shortcuts, offline maps</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span><span class="tech-tag">WatermelonDB</span><span class="tech-tag">Firebase</span><span class="tech-tag">Mapbox</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Coach Andy -->
+        <article class="project-card t-accent reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">AI Marketplace</span>
+              <span class="project-status live" style="color:var(--accent);"><span class="project-status-dot"></span>Live &middot; coachandy.com</span>
+            </div>
+            <h3>Coach Andy &mdash; AI Coaching Marketplace</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Full-stack coaching marketplace connecting students with instructors across multiple sports, featuring an integrated AI coach powered by RAG over video tutorials.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Coach &amp; student dashboards with session booking</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>RAG AI coach with confidence-scored video citations</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>SSE streaming responses, PWA, Sentry</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>261 test files, ratings &amp; certifications</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Next.js</span><span class="tech-tag">Firebase</span><span class="tech-tag">Pinecone</span><span class="tech-tag">OpenAI</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- OffGridChat -->
+        <article class="project-card t-rose reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Privacy &amp; P2P</span>
+            </div>
+            <h3>OffGridChat &mdash; Offline Encrypted Mesh</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Fully offline peer-to-peer chat over Bluetooth &amp; local Wi-Fi mesh, with end-to-end encryption and zero server dependency. Works with no internet at all.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>X25519 ECDH + AES-256-CBC with auto key rotation</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Multi-hop mesh relay with store-and-forward</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Push-to-talk audio, disappearing messages, FTS5 search</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>86+ tests, biometric lock, fingerprint verification</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span><span class="tech-tag">MultipeerConnectivity</span><span class="tech-tag">tweetnacl</span><span class="tech-tag">SQLite</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- IPTV Player -->
+        <article class="project-card t-teal reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Streaming &amp; Media</span>
+              <span class="project-status"><span class="project-status-dot"></span>In Development</span>
+            </div>
+            <h3>Cross-Platform IPTV Player</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Premium IPTV player built with Kotlin Multiplatform for Apple TV and Android TV &mdash; EPG grid guides, catchup/DVR, multi-screen, and cloud sync.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>KMP shared logic: M3U/XMLTV parsers, sync protocol</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>7-day EPG grid, catchup/timeshift, scheduled DVR</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>2&ndash;4 split multi-screen, parental PIN controls</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>CloudKit + Firestore sync, QR playlist sharing</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Kotlin/KMP</span><span class="tech-tag">SwiftUI</span><span class="tech-tag">Compose TV</span><span class="tech-tag">ExoPlayer</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- SkiBuddy AI -->
+        <article class="project-card t-sky reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">RAG &amp; AI</span>
+            </div>
+            <h3>SkiBuddy AI &mdash; RAG Ski Coach</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">AI ski coach grounded in real YouTube tutorials via retrieval-augmented generation, delivering streamed answers with timestamped video citations.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Query rewriting + LLM reranking retrieval pipeline</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>SSE token streaming with embedded video clips</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Skill-level adaptation, multi-language, TTS</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>PWA with offline support, A/B testing framework</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React</span><span class="tech-tag">FastAPI</span><span class="tech-tag">LangChain</span><span class="tech-tag">Pinecone</span><span class="tech-tag">GPT-4o</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Game 29 -->
+        <article class="project-card t-amber reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Real-Time Multiplayer</span>
+            </div>
+            <h3>"29" &mdash; Real-Time Multiplayer Card Game</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Cross-platform implementation of the classic South-Asian trick-taking card game, with real-time multiplayer, AI opponents, and private rooms.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Socket.io game server with Redis state</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>AI opponents with configurable difficulty</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Private rooms, deep links, Google OAuth</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Haptic feedback and cross-platform animations</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span><span class="tech-tag">Expo</span><span class="tech-tag">Socket.io</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Daycare Finder -->
+        <article class="project-card t-orange reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Full-Stack Marketplace</span>
+            </div>
+            <h3>Daycare Search &amp; Comparison Platform</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Marketplace helping parents in the Greater Toronto Area discover, compare, and register for trusted childcare, with map-based search and real-time messaging.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Map &amp; list views with geolocation search</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Multi-criteria filtering &amp; side-by-side comparison</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Parent &amp; provider dashboards, real-time chat</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Registration tracking and reviews</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Next.js</span><span class="tech-tag">Firebase</span><span class="tech-tag">Google Maps</span><span class="tech-tag">Zustand</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cottage Feasibility -->
+        <article class="project-card t-slate reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Fintech &amp; Modeling</span>
+            </div>
+            <h3>Cottage Investment Feasibility Analyzer</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Flutter app for evaluating Ontario cottages as short-term-rental investments &mdash; modeling mortgages, partnerships, profitability, and regulatory compliance.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Canadian mortgage math + OSFI stress tests (GDS/TDS)</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Multi-partner equity &amp; cashflow splitter</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Sensitivity &amp; scenario stress testing, STR rules DB</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Multi-section PDF report export</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Vercel</span><span class="tech-tag">Firebase</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Senior Care -->
+        <article class="project-card t-cyan reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Directory Platform</span>
+            </div>
+            <h3>GTA Senior Care Directory</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Search platform for senior-care institutions across the Greater Toronto Area &mdash; hospitals, clinics, home care, and support services with rich, faceted filtering.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>50+ curated institutions with detailed profiles</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Faceted filtering by category, region, language</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Accreditation, wait times, transit &amp; accessibility</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Full-text search across every field</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Next.js 14</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Tailwind</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Volatile Stocks -->
+        <article class="project-card t-rose reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Data &amp; Fintech</span>
+            </div>
+            <h3>Market Volatility Screener</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Financial tool scanning 200+ US equities to surface the most volatile names by extreme daily price-swing analysis, with interactive candle charting.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Scans 200+ stocks via Yahoo Finance API</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>4-week rolling volatility scoring &amp; ranking</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Interactive Chart.js OHLCV visualizations</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>15-minute server-side caching</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Node.js</span><span class="tech-tag">Express</span><span class="tech-tag">Yahoo Finance</span><span class="tech-tag">Chart.js</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dev Tools combined: docu-sync + local-scope -->
+        <article class="project-card t-violet reveal">
+          <div class="project-accent"></div>
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Developer Tools</span>
+            </div>
+            <h3>Developer Tooling &mdash; MCP &amp; Web Auditing</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">A pair of developer tools: an MCP server bridging AI assistants to Notion &amp; Linear, and a CLI that audits client-side storage and on-device AI runtimes.</p>
+            <ul class="project-features">
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Docu-Sync MCP: Notion + Linear sync, Zod validation</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>local-scope: audits IndexedDB, OPFS, Cache API</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Detects on-device AI runtimes via Playwright</li>
+              <li><svg class="feat" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M6.5 11.2 3.3 8l-1 1L6.5 13l7-7-1-1z"/></svg>Built for AI-in-the-browser &amp; agent workflows</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">TypeScript</span><span class="tech-tag">MCP SDK</span><span class="tech-tag">Playwright</span><span class="tech-tag">Notion API</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Suite callout -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="suite">
+        <div class="suite-text reveal">
+          <div class="section-label">Product suite</div>
+          <h2 class="section-title" style="margin-bottom:1.6rem;">An integrated Snow&nbsp;Sports platform</h2>
+          <p>
+            Several of our products form a connected suite &mdash; <strong>Coach Andy</strong>, <strong>SkiBuddy AI</strong>, the <strong>AI Sports Analysis</strong> engine, and <strong>PeakTracker</strong> &mdash; unified by a shared single-sign-on package so one identity works across every app.
+          </p>
+          <p>
+            It's a real-world demonstration of how we think about architecture: shared libraries, consistent auth, and reusable AI infrastructure across a multi-app portfolio.
+          </p>
+        </div>
+        <div class="suite-visual reveal">
+          <div class="suite-chip"><span class="em">&#9883;</span>AI Sports Analysis</div>
+          <div class="suite-chip"><span class="em">&#9971;</span>Coach Andy</div>
+          <div class="suite-chip"><span class="em">&#9978;</span>SkiBuddy AI</div>
+          <div class="suite-chip"><span class="em">&#9968;</span>PeakTracker</div>
+          <div class="suite-chip"><span class="em">&#128273;</span>Shared SSO Auth</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section section-alt" id="process">
+    <div class="container">
+      <div class="section-header section-header-center reveal">
+        <div class="section-label">How we work</div>
+        <h2 class="section-title">From idea to production</h2>
+        <p class="section-subtitle">A pragmatic, transparent process that gets working software in front of users quickly &mdash; then hardens it for scale.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-num">01</div>
+          <h3>Discover</h3>
+          <p>We dig into the problem, constraints, and users &mdash; then map the smallest path to real value.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">02</div>
+          <h3>Architect</h3>
+          <p>Clean, scalable foundations: the right stack, data model, and infrastructure for where you're headed.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">03</div>
+          <h3>Build &amp; Test</h3>
+          <p>Ship in tight iterations backed by rigorous automated testing &mdash; thousands of tests across our work.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">04</div>
+          <h3>Deploy &amp; Scale</h3>
+          <p>Containerized deploys, observability, and ongoing iteration so the product grows with your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section" id="tech">
+    <div class="container">
+      <div class="section-header section-header-center reveal">
+        <div class="section-label">Tech stack</div>
+        <h2 class="section-title">Tools we work with</h2>
+        <p class="section-subtitle">A proven toolkit spanning frontend, mobile, backend, AI/ML, data, and infrastructure.</p>
+      </div>
+      <div class="tech-grid reveal">
+        <div class="tech-group">
+          <div class="tech-group-title">Frontend</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--sky);"></span>React</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>Next.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#3178c6;"></span>TypeScript</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#38bdf8;"></span>Tailwind</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--accent);"></span>Vite</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#a855f7;"></span>SwiftUI</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Mobile &amp; TV</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#61dafb;"></span>React Native</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>Expo</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#7f52ff;"></span>Kotlin/KMP</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#02569b;"></span>Flutter</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--orange);"></span>Mapbox</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Backend</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#3572a5;"></span>Python</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>FastAPI</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#68a063;"></span>Node.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--text-muted);"></span>Express</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--amber);"></span>Firebase</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--violet);"></span>Stripe</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">AI / ML</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--rose);"></span>PyTorch</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>OpenAI</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--accent);"></span>LangChain</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--teal);"></span>Pinecone</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--sky);"></span>OpenCV</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>MediaPipe</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Data &amp; Real-Time</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#336791;"></span>PostgreSQL</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--rose);"></span>Redis</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>Socket.io</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>WebSockets</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--sky);"></span>SSE</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Media</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>ExoPlayer</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--sky);"></span>AVPlayer</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--orange);"></span>Chart.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--amber);"></span>Whisper</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Integrations</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--accent);"></span>MCP SDK</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>Notion API</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--emerald);"></span>Google Maps</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--sky);"></span>SendGrid</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">DevOps</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:#2496ed;"></span>Docker</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--accent);"></span>Railway</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>Vercel</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--rose);"></span>Sentry</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background:var(--ink);"></span>GH Actions</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section id="contact" class="cta-section">
-    <div class="cta-box fade-in">
-      <h2>Let's Build Something Together</h2>
-      <p>Looking for a technical partner, want to collaborate on open source, or need expertise in AI, mobile, or real-time systems? We'd love to hear from you.</p>
-      <div class="cta-buttons">
-        <a href="mailto:hello@carvingtechnologies.io" class="btn btn-primary">
-          <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-          hello@carvingtechnologies.io
-        </a>
-        <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg class="icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.138 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
-          GitHub
-        </a>
+  <section class="section-dark cta-section" id="contact">
+    <div class="blob blob-1" style="opacity:.3;"></div>
+    <div class="cta-inner reveal">
+      <h2>Have a project in mind?</h2>
+      <p>We're always interested in challenging technical problems. Whether you need an MVP built, an AI integration designed, or a complex system architected &mdash; let's talk.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@carvingtechnologies.io" class="btn-cta-primary">hello@carvingtechnologies.io</a>
+        <a href="https://coachandy.com" target="_blank" rel="noopener" class="btn-cta-secondary">See Coach Andy live &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <div class="footer-inner">
-      <span>&copy; 2026 Carving Technologies Inc. All rights reserved.</span>
-      <div class="footer-links">
-        <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:hello@carvingtechnologies.io">Contact</a>
+      <div class="footer-top">
+        <div class="footer-brand-block">
+          <div class="footer-logo"><div class="logo-mark">CT</div>Carving Technologies</div>
+          <p class="footer-tagline">A software engineering studio building production-grade AI, mobile, and real-time systems &mdash; from concept to deployment.</p>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <a href="#about">About</a>
+            <a href="#capabilities">Capabilities</a>
+            <a href="#projects">Work</a>
+            <a href="#tech">Tech Stack</a>
+          </div>
+          <div class="footer-col">
+            <h4>Products</h4>
+            <a href="https://coachandy.com" target="_blank" rel="noopener">Coach Andy</a>
+            <a href="#projects">SkiBuddy AI</a>
+            <a href="#projects">PeakTracker</a>
+            <a href="#projects">OffGridChat</a>
+          </div>
+          <div class="footer-col">
+            <h4>Connect</h4>
+            <a href="mailto:hello@carvingtechnologies.io">Email us</a>
+            <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener">GitHub</a>
+            <a href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2026 Carving Technologies Inc. All rights reserved.</div>
+        <div class="footer-social">
+          <a href="mailto:hello@carvingtechnologies.io" aria-label="Email">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          </a>
+          <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Scroll-triggered reveal animations (with stagger for grid children)
+    const groups = new Map();
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const parent = el.parentElement;
+          if (!groups.has(parent)) groups.set(parent, 0);
+          const i = groups.get(parent);
+          el.style.transitionDelay = Math.min(i * 70, 420) + 'ms';
+          groups.set(parent, i + 1);
+          el.classList.add('visible');
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+    // Navbar scroll state
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 30);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
 
-    const navToggle = document.getElementById('navToggle');
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => { navLinks.classList.toggle('open'); });
-    navLinks.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => { navLinks.classList.remove('open'); });
-    });
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link =>
+      link.addEventListener('click', () => navLinks.classList.remove('active'))
+    );
+
+    // Duplicate marquee content for seamless loop
+    const marquee = document.getElementById('marquee');
+    if (marquee) marquee.innerHTML += marquee.innerHTML;
+
+    // Animated count-up for hero stat cards
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fmt = n => n.toLocaleString('en-US');
+    const countUp = (el) => {
+      const target = parseInt(el.dataset.count, 10);
+      if (reduceMotion || isNaN(target)) { return; }
+      const dur = 1300; const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(Math.floor(eased * target));
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = fmt(target);
+      };
+      requestAnimationFrame(tick);
+    };
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); statObserver.unobserve(e.target); } });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
   </script>
 
 </body>

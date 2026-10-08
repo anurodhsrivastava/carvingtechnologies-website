@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carving Technologies Inc. — Software Engineering Studio</title>
+  <meta name="description" content="Carving Technologies builds production-grade software across AI/ML, computer vision, real-time systems, cross-platform mobile, and privacy-first platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --bg-muted: #f1f5f9;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --text: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --accent: #4f46e5;
+      --accent-light: #818cf8;
+      --accent-soft: #eef2ff;
+      --accent-dark: #3730a3;
+      --teal: #0d9488;
+      --teal-soft: #f0fdfa;
+      --rose: #e11d48;
+      --rose-soft: #fff1f2;
+      --amber: #d97706;
+      --amber-soft: #fffbeb;
+      --sky: #0284c7;
+      --sky-soft: #f0f9ff;
+      --violet: #7c3aed;
+      --violet-soft: #f5f3ff;
+      --emerald: #059669;
+      --emerald-soft: #ecfdf5;
+      --orange: #ea580c;
+      --orange-soft: #fff7ed;
+      --slate: #475569;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ─── Navigation ─── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 2rem;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      padding: 0.75rem 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: var(--bg);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .navbar.scrolled .logo { color: var(--text); }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: #fff; }
+    .navbar.scrolled .nav-links a { color: var(--text-muted); }
+    .navbar.scrolled .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-sm);
+      color: #fff !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    .navbar.scrolled .nav-cta {
+      background: var(--accent) !important;
+      border-color: var(--accent) !important;
+      color: #fff !important;
+    }
+
+    .navbar.scrolled .nav-cta:hover {
+      background: var(--accent-dark) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled .hamburger span { background: var(--text); }
+
+    /* ─── Hero ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content { max-width: 600px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 100px;
+      padding: 0.375rem 1rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2.5rem;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .hero-stat {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .hero-stat:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.375rem;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+    }
+
+    /* ─── Sections ─── */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-alt { background: var(--bg-soft); }
+    .section-dark {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .section-dark .section-title { color: #fff; }
+
+    .section-subtitle {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    .section-dark .section-subtitle { color: rgba(255, 255, 255, 0.6); }
+
+    .section-header-center {
+      text-align: center;
+    }
+
+    .section-header-center .section-subtitle {
+      margin: 0 auto;
+    }
+
+    /* ─── About ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .about-highlight {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .about-highlight:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .about-highlight-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-highlight-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .about-highlight-label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ─── Capabilities ─── */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .capability-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .capability-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+
+    .capability-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .capability-card h3 {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .capability-card p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Projects ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+    }
+
+    .project-card-header {
+      padding: 1.75rem 1.75rem 0;
+    }
+
+    .project-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-category {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .project-status {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .project-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .project-card h3 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .project-card-body {
+      padding: 0 1.75rem;
+      flex: 1;
+    }
+
+    .project-description {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .project-features {
+      list-style: none;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-features li {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      padding: 0.25rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .project-features li::before {
+      content: '~';
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .project-card-footer {
+      padding: 1rem 1.75rem 1.5rem;
+      margin-top: auto;
+    }
+
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+    }
+
+    .tech-tag {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-muted);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Project theme colors */
+    .theme-violet .project-category { background: var(--violet-soft); color: var(--violet); }
+    .theme-violet .project-features li::before { color: var(--violet); }
+    .theme-violet .project-status-dot { background: var(--violet); }
+
+    .theme-emerald .project-category { background: var(--emerald-soft); color: var(--emerald); }
+    .theme-emerald .project-features li::before { color: var(--emerald); }
+    .theme-emerald .project-status-dot { background: var(--emerald); }
+
+    .theme-sky .project-category { background: var(--sky-soft); color: var(--sky); }
+    .theme-sky .project-features li::before { color: var(--sky); }
+    .theme-sky .project-status-dot { background: var(--sky); }
+
+    .theme-amber .project-category { background: var(--amber-soft); color: var(--amber); }
+    .theme-amber .project-features li::before { color: var(--amber); }
+    .theme-amber .project-status-dot { background: var(--amber); }
+
+    .theme-rose .project-category { background: var(--rose-soft); color: var(--rose); }
+    .theme-rose .project-features li::before { color: var(--rose); }
+    .theme-rose .project-status-dot { background: var(--rose); }
+
+    .theme-accent .project-category { background: var(--accent-soft); color: var(--accent); }
+    .theme-accent .project-features li::before { color: var(--accent); }
+    .theme-accent .project-status-dot { background: var(--accent); }
+
+    .theme-orange .project-category { background: var(--orange-soft); color: var(--orange); }
+    .theme-orange .project-features li::before { color: var(--orange); }
+    .theme-orange .project-status-dot { background: var(--orange); }
+
+    .theme-teal .project-category { background: var(--teal-soft); color: var(--teal); }
+    .theme-teal .project-features li::before { color: var(--teal); }
+    .theme-teal .project-status-dot { background: var(--teal); }
+
+    .theme-slate .project-category { background: var(--bg-muted); color: var(--slate); }
+    .theme-slate .project-features li::before { color: var(--slate); }
+    .theme-slate .project-status-dot { background: var(--slate); }
+
+    /* ─── Tech Stack ─── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .tech-group {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .tech-group-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .tech-group-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-pill {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-muted);
+      padding: 0.375rem 0.75rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: all 0.2s ease;
+    }
+
+    .tech-pill:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .tech-pill-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .cta-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.0625rem;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #fff;
+      color: var(--accent-dark);
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 0.875rem 2rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    .btn-cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      background: #0f172a;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 3rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-copy {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8125rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: rgba(255, 255, 255, 0.8); }
+
+    /* ─── Animations ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-links.active { display: flex; }
+      .nav-links a { color: var(--text-muted) !important; }
+      .nav-links a:hover { color: var(--text) !important; }
+      .nav-cta { align-self: flex-start; }
+
+      .hero { min-height: auto; padding: 7rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero-description { font-size: 1rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+      .section { padding: 4rem 1.5rem; }
+      .section-title { font-size: 1.75rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-highlights { grid-template-columns: 1fr 1fr; }
+
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .tech-grid { grid-template-columns: 1fr; }
+
+      .cta-actions { flex-direction: column; }
+
+      .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-left { flex-direction: column; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-mark">CT</div>
+        Carving Technologies
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tech">Tech Stack</a></li>
+        <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Available for new projects
+        </div>
+        <h1>Engineering Software<br>That <span>Delivers Results</span></h1>
+        <p class="hero-description">
+          We design, build, and ship production-grade systems across AI, computer vision, real-time platforms, and cross-platform mobile &mdash; from concept to deployment.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:hello@carvingtechnologies.io" class="btn-primary">Start a Conversation &rarr;</a>
+          <a href="#projects" class="btn-secondary">View Our Work</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-stats-grid">
+          <div class="hero-stat">
+            <div class="hero-stat-number">9+</div>
+            <div class="hero-stat-label">Production Projects</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">25+</div>
+            <div class="hero-stat-label">Technologies</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">8</div>
+            <div class="hero-stat-label">Core Domains</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-number">5</div>
+            <div class="hero-stat-label">Platforms Shipped</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section section-alt" id="about">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Built for complexity.<br>Driven by craft.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>
+            Carving Technologies is a software engineering studio that specializes in building technically demanding products. We work across the full stack &mdash; from training ML models and integrating computer vision pipelines to shipping polished mobile apps and real-time multiplayer systems.
+          </p>
+          <p>
+            Our portfolio spans AI-powered coaching platforms with custom-trained ML models, peer-to-peer encrypted messaging, cross-platform multiplayer games, GPS-based activity tracking, multi-platform streaming applications, and developer tooling with MCP integrations. Every project reflects a commitment to clean architecture, thorough testing, and thoughtful user experience.
+          </p>
+          <p>
+            Whether it's an MVP for a startup or a complex system for an established business, we approach every engagement with the same rigor: understand the problem deeply, choose the right tools, and ship software that works.
+          </p>
+        </div>
+        <div class="about-highlights fade-up">
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background: var(--accent-soft); color: var(--accent);">&#9670;</div>
+            <div class="about-highlight-number">10+</div>
+            <div class="about-highlight-label">Production Projects</div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background: var(--emerald-soft); color: var(--emerald);">&#9679;</div>
+            <div class="about-highlight-number">30+</div>
+            <div class="about-highlight-label">Technologies Used</div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background: var(--sky-soft); color: var(--sky);">&#9632;</div>
+            <div class="about-highlight-number">9</div>
+            <div class="about-highlight-label">Core Domains</div>
+          </div>
+          <div class="about-highlight">
+            <div class="about-highlight-icon" style="background: var(--amber-soft); color: var(--amber);">&#9650;</div>
+            <div class="about-highlight-number">5</div>
+            <div class="about-highlight-label">Platforms Shipped</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <div class="section-header section-header-center fade-up">
+        <div class="section-label">Capabilities</div>
+        <h2 class="section-title">End-to-end engineering across domains</h2>
+        <p class="section-subtitle">From machine learning pipelines to polished user interfaces, we deliver complete solutions across a broad technical spectrum.</p>
+      </div>
+      <div class="capabilities-grid">
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--violet-soft); color: var(--violet);">&#9883;</div>
+          <h3>AI & Machine Learning</h3>
+          <p>Custom-trained PyTorch models, RAG systems with LangChain and Pinecone, GPT-4o integration, sport-specific coaching AI, and confidence-weighted scoring systems.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--sky-soft); color: var(--sky);">&#9681;</div>
+          <h3>Computer Vision</h3>
+          <p>Custom ResNet-50 pose estimation with Wing Loss training, MediaPipe integration, CNN sport classification, video processing pipelines, and biomechanical analysis systems.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--emerald-soft); color: var(--emerald);">&#9889;</div>
+          <h3>Real-Time Systems</h3>
+          <p>WebSocket-powered multiplayer, Socket.io game servers, live GPS tracking, SSE streaming, and Redis-backed state management.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--amber-soft); color: var(--amber);">&#9776;</div>
+          <h3>Cross-Platform Mobile</h3>
+          <p>React Native and Expo for iOS, Android, and Web. Kotlin Multiplatform for tvOS and Android TV. Native-grade experiences everywhere.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--rose-soft); color: var(--rose);">&#9740;</div>
+          <h3>Privacy & Security</h3>
+          <p>End-to-end encryption with X25519 ECDH and AES-256, P2P mesh networking, offline-first architectures, and zero-trust design.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--accent-soft); color: var(--accent);">&#9638;</div>
+          <h3>Full-Stack Platforms</h3>
+          <p>Next.js and React frontends, FastAPI and Express backends, Firebase and PostgreSQL datastores, with comprehensive auth and APIs.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--orange-soft); color: var(--orange);">&#9636;</div>
+          <h3>Data & Fintech</h3>
+          <p>Financial data pipelines, market analysis tools, real-time charting, volatility screening, and API aggregation systems.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--teal-soft); color: var(--teal);">&#8982;</div>
+          <h3>Streaming & Media</h3>
+          <p>IPTV players, M3U/M3U8 playlist parsing, EPG integration, media playback with ExoPlayer and AVPlayer, and Picture-in-Picture support.</p>
+        </div>
+        <div class="capability-card fade-up">
+          <div class="capability-icon" style="background: var(--sky-soft); color: var(--sky);">&#9881;</div>
+          <h3>Developer Tools & Automation</h3>
+          <p>MCP server development, Notion API integrations, document synchronization pipelines, and AI-assisted developer tooling with schema validation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <div class="section-header section-header-center fade-up">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">What we've built</h2>
+        <p class="section-subtitle">A selection of production systems spanning AI, mobile, real-time, and cross-platform engineering.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- PeakTracker -->
+        <div class="project-card theme-emerald fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">GPS & Mobile</span>
+              <span class="project-status" style="color: var(--emerald);"><span class="project-status-dot"></span>In Development</span>
+            </div>
+            <h3>PeakTracker &mdash; Real-Time Ski & Snowboard Tracking</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Cross-platform mobile app for real-time GPS tracking on the mountain with automatic activity detection, group sessions, 3D mountain replays, and HealthKit integration.</p>
+            <ul class="project-features">
+              <li>Multi-signal confidence scoring for run/lift/idle detection</li>
+              <li>Group sessions with live location sharing on Apple Maps</li>
+              <li>3D Mapbox replay, trail leaderboards, and snow reports</li>
+              <li>1,055 tests, Siri Shortcuts, offline maps, HealthKit sync</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">WatermelonDB</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Mapbox</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Sports Analysis -->
+        <div class="project-card theme-violet fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">AI & Computer Vision</span>
+            </div>
+            <h3>Multi-Sport AI Coaching Platform</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Production-grade platform using custom-trained pose estimation models to analyze athlete technique from video, delivering biomechanical feedback with coaching recommendations across multiple sports.</p>
+            <ul class="project-features">
+              <li>Custom ResNet-50 models with Wing Loss per sport</li>
+              <li>CNN ensemble sport detection with MediaPipe geometry</li>
+              <li>Stripe payments, admin dashboard, 10-language i18n</li>
+              <li>175+ tests, Sentry observability, Docker deployment</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">OpenCV</span>
+              <span class="tech-tag">Stripe</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- IPTV Player -->
+        <div class="project-card theme-teal fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Streaming & Media</span>
+              <span class="project-status" style="color: var(--teal);"><span class="project-status-dot"></span>In Development</span>
+            </div>
+            <h3>Cross-Platform IPTV Streaming Player</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Premium IPTV player built with Kotlin Multiplatform for Apple TV and Android TV, featuring EPG grid guides, Picture-in-Picture, and cloud sync.</p>
+            <ul class="project-features">
+              <li>Kotlin Multiplatform with shared business logic across platforms</li>
+              <li>7-day EPG grid, scheduled DVR, and multi-screen split view</li>
+              <li>HLS, DASH, RTMP, MPEG-TS playback with PiP support</li>
+              <li>Parental controls, cloud sync, and QR code playlist sharing</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Kotlin/KMP</span>
+              <span class="tech-tag">SwiftUI</span>
+              <span class="tech-tag">Compose TV</span>
+              <span class="tech-tag">ExoPlayer</span>
+              <span class="tech-tag">SQLDelight</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OffGridChat -->
+        <div class="project-card theme-rose fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Privacy & P2P</span>
+            </div>
+            <h3>Encrypted Messaging Without the Internet</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Peer-to-peer offline chat with end-to-end encryption, mesh networking, and zero server dependency. Works entirely without internet connectivity.</p>
+            <ul class="project-features">
+              <li>X25519 ECDH key exchange with AES-256-CBC and auto key rotation</li>
+              <li>Multi-hop mesh relay with store-and-forward routing</li>
+              <li>Push-to-talk voice, file sharing, and disappearing messages</li>
+              <li>86+ tests, biometric app lock, and mesh network visualization</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">P2P Mesh</span>
+              <span class="tech-tag">E2E Encryption</span>
+              <span class="tech-tag">SQLite</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snowboard Lessons -->
+        <div class="project-card theme-accent fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">AI Marketplace</span>
+              <span class="project-status" style="color: var(--accent);"><span class="project-status-dot"></span>Live &mdash; coachandy.com</span>
+            </div>
+            <h3>AI-Powered Coaching Marketplace</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Full-stack coaching marketplace connecting students with instructors, featuring an integrated AI coach powered by RAG with video-sourced knowledge.</p>
+            <ul class="project-features">
+              <li>Coach and student dashboards with session booking</li>
+              <li>RAG-powered AI coach with video source citations</li>
+              <li>Lesson packages, ratings, and video bookmarks</li>
+              <li>SSE streaming for real-time AI responses</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Pinecone</span>
+              <span class="tech-tag">OpenAI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 29 -->
+        <div class="project-card theme-amber fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Real-Time Multiplayer</span>
+            </div>
+            <h3>Real-Time Multiplayer Card Game</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Cross-platform implementation of "29" &mdash; a classic South Asian trick-taking card game with real-time multiplayer, AI opponents, and private rooms.</p>
+            <ul class="project-features">
+              <li>Socket.io game server with Redis state management</li>
+              <li>AI opponents with configurable difficulty levels</li>
+              <li>Private rooms with deep links and Google OAuth</li>
+              <li>Haptic feedback and cross-platform animations</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Expo</span>
+              <span class="tech-tag">Socket.io</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Snowboard Coach AI -->
+        <div class="project-card theme-sky fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">RAG & AI Backend</span>
+            </div>
+            <h3>AI Coach Trained on Video Content</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">RAG-powered chatbot that ingests YouTube snowboard tutorials via Whisper transcription, indexes them in Pinecone, and delivers expert answers with video citations.</p>
+            <ul class="project-features">
+              <li>OpenAI Whisper transcription of video tutorials</li>
+              <li>LangChain RAG pipeline with Pinecone vector store</li>
+              <li>Streaming GPT-4o responses with source timestamps</li>
+              <li>Google OAuth and conversation history</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">Pinecone</span>
+              <span class="tech-tag">OpenAI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daycare Finder -->
+        <div class="project-card theme-orange fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Full-Stack Marketplace</span>
+            </div>
+            <h3>Daycare Search & Comparison Platform</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Full-stack marketplace helping parents in the Greater Toronto Area discover, compare, and register for trusted childcare providers with map-based search.</p>
+            <ul class="project-features">
+              <li>Map and list views with geolocation-based search</li>
+              <li>Multi-criteria filtering, favorites, and side-by-side comparison</li>
+              <li>Parent and provider dashboards with real-time messaging</li>
+              <li>Registration management and review system</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Google Maps</span>
+              <span class="tech-tag">Firestore</span>
+              <span class="tech-tag">Zustand</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Volatile Stocks -->
+        <div class="project-card theme-slate fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Data & Fintech</span>
+            </div>
+            <h3>Market Volatility Screener</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Financial data tool that scans 200+ US equities to surface the top 10 most volatile stocks based on 4-week daily price swing analysis with interactive charting.</p>
+            <ul class="project-features">
+              <li>Automated scanning of 200+ stocks via Yahoo Finance API</li>
+              <li>4-week rolling volatility calculation and ranking</li>
+              <li>Interactive Chart.js price and OHLCV visualizations</li>
+              <li>15-minute server-side caching for performance</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express</span>
+              <span class="tech-tag">Yahoo Finance</span>
+              <span class="tech-tag">Chart.js</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docu-Sync MCP -->
+        <div class="project-card theme-emerald fade-up">
+          <div class="project-card-header">
+            <div class="project-card-meta">
+              <span class="project-category">Developer Tools</span>
+            </div>
+            <h3>MCP Server for Document Sync</h3>
+          </div>
+          <div class="project-card-body">
+            <p class="project-description">Model Context Protocol server that enables AI assistants to synchronize and interact with documents across platforms, with deep Notion API integration and schema validation.</p>
+            <ul class="project-features">
+              <li>MCP SDK-based server for AI-assisted document workflows</li>
+              <li>Notion API integration for reading and writing pages</li>
+              <li>Zod schema validation for type-safe data handling</li>
+              <li>RESTful API bridge with Axios HTTP client</li>
+            </ul>
+          </div>
+          <div class="project-card-footer">
+            <div class="project-tech-stack">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">MCP SDK</span>
+              <span class="tech-tag">Notion API</span>
+              <span class="tech-tag">Zod</span>
+              <span class="tech-tag">Node.js</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section" id="tech">
+    <div class="container">
+      <div class="section-header section-header-center fade-up">
+        <div class="section-label">Tech Stack</div>
+        <h2 class="section-title">Tools we work with</h2>
+        <p class="section-subtitle">A proven toolkit spanning frontend, backend, AI/ML, mobile, and infrastructure.</p>
+      </div>
+      <div class="tech-grid fade-up">
+        <div class="tech-group">
+          <div class="tech-group-title">Frontend</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>React</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>Next.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #3178c6;"></span>TypeScript</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #38bdf8;"></span>Tailwind CSS</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--accent);"></span>Vite</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #a855f7;"></span>SwiftUI</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #4ade80;"></span>Compose</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Mobile</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #61dafb;"></span>React Native</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>Expo</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #7f52ff;"></span>Kotlin/KMP</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--orange);"></span>Mapbox</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>WatermelonDB</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Backend</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #3572a5;"></span>Python</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>FastAPI</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #68a063;"></span>Node.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text-muted);"></span>Express</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--amber);"></span>Firebase</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--violet);"></span>Stripe</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">AI / ML</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--rose);"></span>PyTorch</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>OpenAI</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--accent);"></span>LangChain</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--teal);"></span>Pinecone</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>OpenCV</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>MediaPipe</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--violet);"></span>DeepLabCut</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Databases</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #336791;"></span>PostgreSQL</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--rose);"></span>Redis</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--amber);"></span>Firestore</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>SQLite</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text-muted);"></span>Prisma</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #7f52ff;"></span>SQLDelight</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Real-Time</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>Socket.io</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>WebSockets</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>SSE</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--violet);"></span>P2P Mesh</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Media</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>ExoPlayer</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>AVPlayer</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--orange);"></span>Chart.js</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--amber);"></span>Whisper</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">Integrations</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--accent);"></span>MCP SDK</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>Notion API</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--emerald);"></span>Google Maps</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--sky);"></span>SendGrid</span>
+          </div>
+        </div>
+        <div class="tech-group">
+          <div class="tech-group-title">DevOps</div>
+          <div class="tech-group-items">
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: #2496ed;"></span>Docker</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--orange);"></span>Git</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--accent);"></span>Railway</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>Vercel</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--rose);"></span>Sentry</span>
+            <span class="tech-pill"><span class="tech-pill-dot" style="background: var(--text);"></span>GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark cta-section" id="contact">
+    <div class="cta-inner fade-up">
+      <h2>Have a project in mind?</h2>
+      <p>We're always interested in challenging technical problems. Whether you need an MVP built, an AI integration designed, or a complex system architected &mdash; let's talk.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@carvingtechnologies.io" class="btn-cta-primary">hello@carvingtechnologies.io</a>
+        <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener" class="btn-cta-secondary">GitHub &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">Carving Technologies Inc.</div>
+        <div class="footer-copy">&copy; 2026 All rights reserved.</div>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:hello@carvingtechnologies.io">Email</a>
+        <a href="https://github.com/carvingtechnologies" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://coachandy.com" target="_blank" rel="noopener">CoachAndy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Navbar scroll behavior
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+  </script>
+
+</body>
+</html>
